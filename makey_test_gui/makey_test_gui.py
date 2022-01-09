@@ -71,12 +71,15 @@ def sound_thread(name):
     global quit_sound
     global sound_queue
     global sound_cv
-    while not quit_sound:
+
+    done = False
+    while not done:
         s = None
         with sound_cv:
             while not len(sound_queue) > 0 and not quit_sound:
                 sound_cv.wait()
             if quit_sound:
+                done = True
                 break                
             s = sound_queue.pop(0)
         if s :
@@ -87,8 +90,8 @@ def terminate():
     global sound_queue
     global sound_cv
 
-    quit_sound = True
     with sound_cv:
+        quit_sound = True
         sound_cv.notify()
     root.destroy()
 
