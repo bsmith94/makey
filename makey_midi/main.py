@@ -8,11 +8,12 @@
 from tkinter import *
 
 from playsound import playsound
-import threading
 import argparse
 import configparser
 import os
 import pygame.midi
+import threading
+import time
 
 last_note = None
 def onKey(event):
@@ -24,6 +25,7 @@ def onKey(event):
     global modifier
     global note_name
     global last_note
+    global last_note_time
 
     if event.keysym in buttons:
         if active_button:
@@ -34,7 +36,9 @@ def onKey(event):
         n = base_note + scale[b['index']] + modifier
         silence()
         player.note_on(n, 127, midi_ch)
-        last_note = n
+        with nt_cv:
+            last_note = n
+            last_note_time = time.time_ns()
         modifier = 0
         note_name.config(text = pygame.midi.midi_to_ansi_note(n))
 
@@ -43,9 +47,10 @@ def silence():
     global player
     global midi_ch
 
-    if last_note:
-        player.note_off(last_note, 127, midi_ch)
-        last_note = None
+    with nt_cv:
+        if last_note:
+            player.note_off(last_note, 127, midi_ch)
+            last_note = None
 
 def onSilence(event):
     silence()
@@ -76,7 +81,7 @@ def loadScale(idx):
     global scale_name
     scale = scales[idx]['notes']
     scale_name.config(text = scales[idx]['name'])
-    
+
 def onIonian(event):
     loadScale(0)
 
@@ -107,7 +112,7 @@ def onPitch(event):
             p = -8192
         elif (p > 8191):
             p = 8191
-        
+
         player.pitch_bend(p)
     lastPitchY = y
 
@@ -159,8 +164,12 @@ button_defs = {
 
 def terminate():
     global root
+    global nt_cv
+    global quit_thread
 
     silence()
+    with nt_cv:
+        quit_thread = True
     pygame.midi.quit()
     root.destroy()
 
@@ -172,12 +181,29 @@ def init_midi(midi_ch, instrument):
     player.set_instrument(instrument, midi_ch)
     return player
 
+def note_thread():
+    global nt_cv
+    global last_note
+    global last_note_time
+    global quit_thread
+
+    done = False
+    while not done:
+        time.sleep(0.01)
+        with nt_cv:
+            now = time.time_ns()
+            if last_note and now - last_note_time > 250*1000*1000:
+                silence()
+            done = quit_thread
+
+
 script_home = os.path.dirname(os.path.realpath(__file__))
 buttons = {}
 active_button = None
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--config', default='{}/makey_midi.cfg'.format(script_home))
+parser.add_argument('--pizzicato', action='store_true')
 args = parser.parse_args()
 
 config = configparser.ConfigParser()
@@ -216,6 +242,12 @@ scales = [
 scale = scales[0]['notes']
 base_note = 60
 modifier = 0
+quit_thread = False
+
+nt_cv = threading.Condition()
+if args.pizzicato:
+    qt = threading.Thread(target= note_thread)
+    qt.start()
 
 root = Tk()
 root.protocol('WM_DELETE_WINDOW', terminate)
