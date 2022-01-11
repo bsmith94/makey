@@ -92,6 +92,33 @@ def onMixolydian(event):
 def onAeolian(event):
     loadScale(4)
 
+def onPitch(event):
+    global player
+    global lastPitchY
+    global pitch
+
+    y = event.y
+    if y == 0:
+        y = 1
+    if lastPitchY:
+        pitch += -(y - lastPitchY)
+        p = pitch * 100
+        if (p < -8192):
+            p = -8192
+        elif (p > 8191):
+            p = 8191
+        
+        player.pitch_bend(p)
+    lastPitchY = y
+
+def onPitchClear(event):
+    global player
+    global lastPitchY
+    global pitch
+
+    player.pitch_bend()
+    pitch = 0
+    lastPitchY = None
 
 button_defs = {
     'width' : 4,
@@ -159,6 +186,8 @@ if not 'version' in config['DEFAULT']:
     raise ValueError('Could not read {}'.format(args.config))
 
 midi_ch=0
+lastPitchY = 0
+pitch = 0
 player = init_midi(midi_ch, 0)
 scales = [
     {
@@ -214,6 +243,13 @@ note_name = Label(root, text='  ')
 note_name.pack()
 scale_name = Label(root, text=scales[0]['name'])
 scale_name.pack()
+pitch_wheel = Canvas(root, width=100, height=200, bg='gray')
+pitch_wheel.pack()
+pl = Label(root, text='Pitch Drag')
+pl.pack()
+
+pitch_wheel.bind('<B1-Motion>', onPitch)
+pitch_wheel.bind('<Button-1>', onPitchClear)
 
 
 root.bind('a', onModifyOctaveDown)
