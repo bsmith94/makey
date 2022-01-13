@@ -1,0 +1,18 @@
+{
+    "meta":
+    {
+        "name": "PentaPower",
+        "version": 1,
+        "date": "2022-01-13",
+        "author": "Brian T. Smith",
+        "author_email": "flatpick@gmail.com",
+        "url": "https://github.com/bsmith94/makey"
+    },
+    "root":
+    {
+        "title": "makey MIDI : PentaPower 1",
+        "height": 405,
+        "width": 796,
+        "background": "pentapower.png"
+    } 
+}
