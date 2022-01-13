@@ -34,21 +34,21 @@ def onKey(event):
         b['button'].configure(width=b['width']+1, height=b['height']+1)
         active_button = b
         n = base_note + scale[b['index']] + modifier
-        silence()
         player.note_on(n, 127, midi_ch)
+        silence(n)
         with nt_cv:
             last_note = n
             last_note_time = time.time_ns()
         modifier = 0
         note_name.config(text = pygame.midi.midi_to_ansi_note(n))
 
-def silence():
+def silence(note = None):
     global last_note
     global player
     global midi_ch
 
     with nt_cv:
-        if last_note:
+        if last_note and note != last_note:
             player.note_off(last_note, 127, midi_ch)
             last_note = None
 
