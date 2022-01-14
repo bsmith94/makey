@@ -25,6 +25,7 @@ class ButtonDef:
         self.image_path = image_path
         self.key = key
         self.image = None
+        self.index = None
 
 class Skin:
     
@@ -62,10 +63,13 @@ class Skin:
     def loadPads(self, data):
         pads = self.get(self.get(data, 'buttons'), 'pads')
         instances = self.get(pads, 'instances')
+        idx = 0
         for p in instances:
             d = ButtonDef(pads['width'], pads['height'],
                                        p['x'], p['y'],
                                        pads['image'], p['key'])
+            d.index = idx
+            idx += 1
             self.pads.append(d)
             
     def loadImage(self, path, zoom = 0):
@@ -105,20 +109,20 @@ class MidiController:
 
 class View:
 
-    def __init__(self, skin, ctl):
+    def __init__(self, skin):
         self.skin = skin
-        self.ctl = ctl
         self.root = None
         self.pads = []
 
 
-    def start(self, terminate):
+    def build(self):
         self.root = Tk()
-        self.root.protocol('WM_DELETE_WINDOW', terminate)        
         self.buildUi()
+
+    def start(self):
         self.root.focus()
         self.root.mainloop()
-        
+
     def destroy(self):
         self.root.destroy()
 
@@ -135,32 +139,60 @@ class View:
             self.pads.append(l)
             l.photo = p.image
             l.defn = p
-            l.bind('<Button-1>', self.ctl.padHit)
-            self.root.bind('<{}>'.format(p.key), self.ctl.padHit)
             l.place(x=p.x, y=p.y)
         
     def buildUi(self):
+        # skin.resolve() must be invoked after Tk is created
         self.skin.resolve()
         self.buildRoot()
         self.buildPads()
-        
 
-class App:
+class UiController:
+
+    def __init__(self, app, view, model):
+        self.app = app
+        self.view = view
+        self.model = model
+        self.key_map = {}
+
+    def wire(self):
+        self.view.root.protocol('WM_DELETE_WINDOW', self.terminate)
+        for p in self.view.pads:
+            p.bind('<Button-1>', self.padHit)
+            self.view.root.bind('<{}>'.format(p.defn.key), self.keyHit)
+            self.key_map[p.defn.key] = {
+                'widget' : p,
+                'handler' : self._padHit
+            }
+
+    def terminate(self):
+        self.view.destroy()
+        self.model.terminate()
+
+    def keyHit(self, event):
+        if event.keysym in self.key_map:
+            b = self.key_map[event.keysym]
+            b['handler'](event, b['widget'])
+
+    def _padHit(self, event, pad):
+        self.model.playNote(60 + pad.defn.index)
+
+    def padHit(self, event):
+        self._padHit(event, event.widget)
+
+
+        class App:
 
     def __init__(self, skin):
         self.skin = skin
         self.midi = MidiController()
-        self.view = View(skin, self)
-        
-    def terminate(self):
-        self.midi.terminate()
-        self.view.destroy()
+        self.view = View(skin)
+        self.ctl = UiController(self, self.view, self.midi)
 
     def start(self):
-        self.view.start(self.terminate)
-
-    def padHit(self, event):
-        self.midi.playNote(60)
+        self.view.build()
+        self.ctl.wire()
+        self.view.start()
 
     
 if __name__ == '__main__':
