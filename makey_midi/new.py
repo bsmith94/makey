@@ -15,6 +15,17 @@ def resolve_path(parent_dir, p):
         p = os.path.join(parent_dir, p)
     return p
 
+class ButtonDef:
+
+    def __init__(self, width, height, x, y, image_path, key):
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = y
+        self.image_path = image_path
+        self.key = key
+        self.image = None
+
 class Skin:
     
     def __init__(self):
@@ -23,7 +34,7 @@ class Skin:
         self.height = None
         self.width = None
         self.background = None
-
+        self.pads = []
 
     def get(self, data, key, required = True, def_val = None):
         r = def_val
@@ -33,18 +44,30 @@ class Skin:
             raise ValueError('required value {} not specified'.format(key))
         return r
 
-
     def load(self, path):
         self.path = path
         self.resource_dir = os.path.dirname(os.path.realpath(path))
         with open(path) as f:
             d = json.load(f)
-        root = self.get(d, 'root')
+        self.loadRoot(d)
+        self.loadPads(d)
+
+    def loadRoot(self, data):
+        root = self.get(data, 'root')
         self.title = self.get(root, 'title')
         self.height = self.get(root, 'height')
         self.width = self.get(root, 'width')
         self.background = resolve_path(self.resource_dir, self.get(root, 'background'))
 
+    def loadPads(self, data):
+        pads = self.get(self.get(data, 'buttons'), 'pads')
+        instances = self.get(pads, 'instances')
+        for p in instances:
+            d = ButtonDef(pads['width'], pads['height'],
+                                       p['x'], p['y'],
+                                       pads['image'], p['key'])
+            self.pads.append(d)
+            
     def loadImage(self, path, zoom = 0):
         i = PhotoImage(file = path)
         if zoom:
@@ -53,7 +76,8 @@ class Skin:
 
     def resolve(self):
         self.background_img = self.loadImage(self.background)
-
+        for p in self.pads:
+            p.image = self.loadImage(resolve_path(self.resource_dir, p.image_path))
 
 class MidiController:
 
@@ -79,41 +103,65 @@ class MidiController:
     def terminate(self):
         self.silence()
 
+class View:
+
+    def __init__(self, skin, ctl):
+        self.skin = skin
+        self.ctl = ctl
+        self.root = None
+        self.pads = []
+
+
+    def start(self, terminate):
+        self.root = Tk()
+        self.root.protocol('WM_DELETE_WINDOW', terminate)        
+        self.buildUi()
+        self.root.focus()
+        self.root.mainloop()
+        
+    def destroy(self):
+        self.root.destroy()
+
+    def buildRoot(self):
+        self.root.title(self.skin.title)
+        self.root.geometry('{}x{}'.format(self.skin.width, self.skin.height))
+        self.background = Label(self.root, image = self.skin.background_img)
+        self.background.pack()
+
+    def buildPads(self):
+        for p in self.skin.pads:
+            l = Label(self.root, width = p.width, height = p.height,
+                       bg='black', image=p.image)
+            self.pads.append(l)
+            l.photo = p.image
+            l.defn = p
+            l.bind('<Button-1>', self.ctl.padHit)
+            self.root.bind('<{}>'.format(p.key), self.ctl.padHit)
+            l.place(x=p.x, y=p.y)
+        
+    def buildUi(self):
+        self.skin.resolve()
+        self.buildRoot()
+        self.buildPads()
+        
+
 class App:
 
     def __init__(self, skin):
         self.skin = skin
         self.midi = MidiController()
-
+        self.view = View(skin, self)
+        
     def terminate(self):
         self.midi.terminate()
-        self.root.destroy()
+        self.view.destroy()
 
     def start(self):
-        self.root = Tk()
-        self.root.protocol('WM_DELETE_WINDOW', self.terminate)
-        self.build_ui()
-        self.root.focus()
-        self.root.mainloop()
+        self.view.start(self.terminate)
 
-    def buttonHit(self, event):
+    def padHit(self, event):
         self.midi.playNote(60)
 
-    def build_ui(self):
-        self.skin.resolve()
-        self.root.title(self.skin.title)
-        self.root.geometry('{}x{}'.format(self.skin.width, self.skin.height))
-        self.background = Label(self.root, image = self.skin.background_img)
-        self.background.pack()
-        bi = PhotoImage(file = 'button.png')
-        l = Label(self.root, width = 53, height = 53, bg='black', image=bi)
-        l.photo = bi
-        l.bind('<Button-1>', self.buttonHit)
-        self.root.bind('<Up>', self.buttonHit)
-        #l.grid(column=2,row=2)
-        l.place(x=300,y=200)
-
-        
     
 if __name__ == '__main__':
 

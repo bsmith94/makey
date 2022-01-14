@@ -14,5 +14,43 @@
         "height": 405,
         "width": 796,
         "background": "pentapower.png"
-    } 
+    },
+    "buttons":
+    {
+        "pads":
+        {
+            "width": 53,
+            "height": 53,
+            "image": "pad.png",
+            "instances":
+            [
+                {
+                    "x": 20,
+                    "y": 200,
+                    "key": "Left"
+                },
+                {
+                    "x": 83,
+                    "y": 200,
+                    "key": "Up"
+                },
+                {
+                    "x": 146,
+                    "y": 200,
+                    "key": "Right"
+                },
+                {
+                    "x": 209,
+                    "y": 200,
+                    "key": "Down"
+                },
+                {
+                    "x": 272,
+                    "y": 200,
+                    "key": "space"
+                }
+            ]
+        }
+    }
+    
 }
