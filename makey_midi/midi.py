@@ -17,6 +17,60 @@ class Note:
         self.channel = channel
         self.expiration = expiration
 
+class Silencer:
+
+    def __init__(self, midi):
+        self.midi = midi
+        self.cv = None
+        self.thread = None
+        self.active_notes = {}
+        self.quit_thread = False
+
+    def start(self):
+        self.quit_thread = False
+        self.cv = threading.Condition()
+        self.thread = threading.Thread(target = self.run)
+        self.thread.start()
+
+    def run(self):
+        done = False
+        period = 0.1
+        while not done:
+            with self.cv:
+                done = self.quit_thread
+                self.silence(period)
+            if not done:
+                time.sleep(period)
+        with self.cv:
+            self.cv.notify()
+
+    def _duration_nanos(self, d):
+        return int(d * 1000000000)
+
+    def silence(self, period):
+        with self.cv:
+            now = time.time_ns()
+            when = now + self._duration_nanos(period / 2)
+            for k in list(self.active_notes):
+                n = self.active_notes[k]
+                if period == 0 or (n.expiration >= 0 and n.expiration <= when):
+                    self.midi.player.note_off(n.number, n.volume, n.channel)
+                    del self.active_notes[k]
+
+    def note_on(self, note):
+        with self.cv:
+            self.active_notes[(note.channel, note.number)] = note
+
+    def quit(self):
+        with self.cv:
+            self.quit_thread = True
+            self.cv.wait()
+        self.silence(0)
+        self.cv = None
+        self.thread = None
+        self.active_notes = None
+
+
 class MidiController:
 
     MIN_PITCH_BEND = -8192
@@ -26,77 +80,38 @@ class MidiController:
         self.cfg = cfg
         self.output = None
         self.player = None
-        self.duration = None
+        self.duration = 0.1
         self.silencer = None
-        self.silencer_cv = None
-        self.quit_silencer = False
-        self.active_notes = None
-
-    def _duration_nanos(self, d):
-        return int(d * 1000000000)
 
     def start(self):
-        self.active_notes = {}
-
         pygame.mixer.pre_init(44100, -16, 2, 2048)
         pygame.midi.init()
         self.output = pygame.midi.get_default_output_id()
         self.player = pygame.midi.Output(self.output)
-        self.silencer_cv = threading.Condition()
-        self.quit_silencer = False
-        self.silencer = threading.Thread(target=self.silencer_thread)
+        self.silencer = Silencer(self)
         self.silencer.start()
 
     def set_instrument(self, instrument, channel):
-        print('set ', instrument, channel)
         self.player.set_instrument(instrument, channel)
 
     def set_pitch_bend(self, v):
         v = min(p, max(p, MidiController.MIN_PITCH_BEND), MidiController.MAX_PITCH_BEND)
         self.player.pitch_bend(v)
 
-    def silencer_thread(self):
-        done = False
-        period = 0.1
-        while not done:
-            with self.silencer_cv:
-                done = self.quit_silencer
-                self.silence(period)
-            if not done:
-                time.sleep(period)
-        with self.silencer_cv:
-            self.silencer_cv.notify()
-
-    def silence(self, period):
-        now = time.time_ns()
-        when = now + self._duration_nanos(period / 2)
-        for k in list(self.active_notes):
-            n = self.active_notes[k]
-            if period == 0 or (n.expiration >= 0 and n.expiration <= when):
-                #print('kill {}'.format(n))
-                self.player.note_off(n.number, n.volume, n.channel)
-                del self.active_notes[k]
-
     def play_note(self, number, volume, channel):
-        with self.silencer_cv:
-            now = time.time_ns()
-            if self.duration != None:
-                exp = now + self.duration
-            else:
-                exp = -1
-            k = (channel, number)
-            note = Note(number, volume, channel, exp)
-            self.active_notes[k] = note
-            self.player.note_on(number, volume, channel)
+        now = time.time_ns()
+        if self.duration != None:
+            exp = now + self.duration
+        else:
+            exp = -1
+        note = Note(number, volume, channel, exp)
+        self.silencer.note_on(note)
+        self.player.note_on(number, volume, channel)
 
     def terminate(self):
-        with self.silencer_cv:
-            self.quit_silencer = True
-            self.silencer_cv.wait()
-        self.silence(0)
-        self.player = None
-        self.silencer_cv = None
+        self.silencer.quit()
         self.silencer = None
+        self.player = None
         self.active_notes = None
         pygame.midi.quit()
 
