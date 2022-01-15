@@ -37,12 +37,11 @@ class Silencer:
         period = 0.1
         while not done:
             with self.cv:
-                done = self.quit_thread
                 self.silence(period)
-            if not done:
-                time.sleep(period)
+                self.cv.wait(period)
+                done = self.quit_thread
         with self.cv:
-            self.cv.notify()
+            self.cv.notify_all()
 
     def _duration_nanos(self, d):
         return int(d * 1000000000)
