@@ -18,7 +18,7 @@ class App:
     def __init__(self, cfg):
         self.cfg = cfg
         self.skin = Skin()
-        self.midi = MidiController()
+        self.midi = MidiController(cfg)
         self.view = TkView()
         self.ctl = TkController(self, self.view, self.midi)
 
@@ -26,6 +26,8 @@ class App:
         self.skin.load(resolve_path(self.cfg.home, self.cfg['DEFAULT']['skin']))
         self.view.create(self.skin)
         self.ctl.wire()
+        self.midi.start()
+        self.midi.set_instrument(0, 0)
         self.view.start()
     
 if __name__ == '__main__':
