@@ -1,0 +1,81 @@
+{
+    "channels":
+    [
+        {
+            "number": 0,
+            "name": "Channel 0",
+            "instruments":
+            [
+                {
+                    "number": 0,
+                    "name" : "Channel 0, Instrument 0"
+                },
+                {
+                    "number": 1,
+                    "name" : "Channel 0, Instrument 1"
+                },
+                {
+                    "number": 2,
+                    "name" : "Channel 0, Instrument 2"
+                }
+            ]
+        },
+        {
+            "number": 1,
+            "name": "Channel 1",
+            "instruments":
+            [
+                {
+                    "number": 0,
+                    "name" : "Channel 1, Instrument 0"
+                },
+                {
+                    "number": 1,
+                    "name" : "Channel 1, Instrument 1"
+                },
+                {
+                    "number": 2,
+                    "name" : "Channel 1, Instrument 2"
+                }
+            ]
+        },
+        {
+            "number": 2,
+            "name": "Channel 2",
+            "instruments":
+            [
+                {
+                    "number": 0,
+                    "name" : "Channel 2, Instrument 0"
+                },
+                {
+                    "number": 1,
+                    "name" : "Channel 2, Instrument 1"
+                },
+                {
+                    "number": 2,
+                    "name" : "Channel 2, Instrument 2"
+                }
+            ]
+        },
+        {
+            "number": 3,
+            "name": "Channel 3",
+            "instruments":
+            [
+                {
+                    "number": 0,
+                    "name" : "Channel 3, Instrument 0"
+                },
+                {
+                    "number": 1,
+                    "name" : "Channel 3, Instrument 1"
+                },
+                {
+                    "number": 2,
+                    "name" : "Channel 3, Instrument 2"
+                }
+            ]
+        }
+    ]
+}
