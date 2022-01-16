@@ -8,6 +8,7 @@
 from tkinter import *
 from util import *
 from controls import *
+from collections.abc import Sequence
 
 class TkImages:
 
@@ -38,6 +39,24 @@ class TkImages:
         if zoom:
             i.zoom(zoom)
         return i
+
+class TkButtonGroup(Sequence):
+
+    def __init__(self, buttons):
+        self.buttons = buttons
+        self.active = None
+
+    def set_active(self, button):
+        if (self.active):
+            self.active.set_active(False)
+        self.active = button
+        button.set_active(True)
+
+    def __getitem__(self, index):
+        return self.buttons[index]
+
+    def __len__(self):
+        return len(self.buttons)
 
 class TkView:
 
@@ -76,7 +95,8 @@ class TkView:
         self.background = Label(self.root, image = self.images.background)
         self.background.pack()
 
-    def create_two_state_buttons(self, defs, images, buttons):
+    def create_two_state_buttons(self, defs, images):
+        buttons = []
         idx = 0
         for p in defs:
             imgs = images[idx]
@@ -88,18 +108,23 @@ class TkView:
             b.photo = imgs[0]
             b.defn = p
             b.place(x = p.x, y = p.y)
+        return buttons
 
     def create_pads(self):
-        self.create_two_state_buttons(self.skin.pads, self.images.pads, self.pads)
+        b = self.create_two_state_buttons(self.skin.pads, self.images.pads)
+        self.pads = TkButtonGroup(b)
 
     def create_tonics(self):
-        self.create_two_state_buttons(self.skin.tonics, self.images.tonics, self.tonics)
+        b = self.create_two_state_buttons(self.skin.tonics, self.images.tonics)
+        self.tonics = TkButtonGroup(b)
 
     def create_octaves(self):
-        self.create_two_state_buttons(self.skin.octaves, self.images.octaves, self.octaves)
+        b = self.create_two_state_buttons(self.skin.octaves, self.images.octaves)
+        self.octaves = TkButtonGroup(b)
 
     def create_patterns(self):
-        self.create_two_state_buttons(self.skin.patterns, self.images.patterns, self.patterns)
+        b = self.create_two_state_buttons(self.skin.patterns, self.images.patterns)
+        self.patterns = TkButtonGroup(b)
 
     def create_control(self, cls, defn, bg = None, image = None, args = None):
         if args != None:
@@ -119,10 +144,16 @@ class TkView:
         self.create_patterns()
 
     def set_active_pad(self, pad):
-        if self.active_pad:
-            self.active_pad.set_active(False)
-        self.active_pad = pad
-        pad.set_active(True)
+        self.pads.set_active(pad)
+
+    def set_active_octave(self, button):
+        self.octaves.set_active(button)
+
+    def set_active_tonic(self, button):
+        self.tonics.set_active(button)
+
+    def set_active_pattern(self, button):
+        self.patterns.set_active(button)
 
 if __name__ == '__main__':
     pass
