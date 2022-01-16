@@ -47,7 +47,7 @@ class ButtonDef(WidgetDef):
         return 'image'
 
 class TwoStateButtonDef(ButtonDef):
-    
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.active_image_path = None
@@ -68,7 +68,9 @@ class Skin:
         self.width = None
         self.background = None
         self.pads = []
-
+        self.tonics = []
+        self.octaves = []
+        self.patterns = []
 
     def load(self, path):
         self.path = path
@@ -77,8 +79,11 @@ class Skin:
             d = json.load(f)
         self.load_root(d)
         self.load_pads(d)
-        self.channels = WidgetDef()
-        self.channels.load(json_get(json_get(d, 'controls'), 'channels'))
+        self.load_tonics(d)
+        self.load_octaves(d)
+        self.load_patterns(d)
+        #self.channels = WidgetDef()
+        #self.channels.load(json_get(json_get(d, 'controls'), 'channels'))
 
     def load_root(self, data):
         root = json_get(data, 'root')
@@ -87,21 +92,39 @@ class Skin:
         self.width = json_get(root, 'width')
         self.background = resolve_path(self.resource_dir, json_get(root, 'background'))
 
-    def load_pads(self, data):
-        pads = json_get(json_get(data, 'controls'), 'pads')
-        instances = json_get(pads, 'instances')
+    def load_two_states(self, data):
+        defs = []
+        instances = json_get(data, 'instances')
         idx = 0
-        width = json_get(pads, 'width', required = False)
-        height = json_get(pads, 'height', required = False)
-        y = json_get(pads, 'y', required = False)
+        width = json_get(data, 'width', required = False)
+        height = json_get(data, 'height', required = False)
+        y = json_get(data, 'y', required = False)
+        img_inactive = json_get(data, 'image-inactive')
+        img_active = json_get(data, 'image-active')
         for p in instances:
             d = TwoStateButtonDef()
             d.load(p, width = width, height = height, y = y,
-                   image_path = json_get(pads, 'image-inactive', required = False),
-                   active_image_path = json_get(pads, 'image-active', required = False))
+                   image_path = img_inactive, active_image_path = img_active)
             d.index = idx
             idx += 1
-            self.pads.append(d)
+            defs.append(d)
+        return defs
+
+    def load_pads(self, data):
+        pads = json_get(json_get(data, 'controls'), 'pads')
+        self.pads = self.load_two_states(pads)
+
+    def load_tonics(self, data):
+        tonics = json_get(json_get(data, 'controls'), 'tonics')
+        self.tonics = self.load_two_states(tonics)
+
+    def load_octaves(self, data):
+        octaves = json_get(json_get(data, 'controls'), 'octaves')
+        self.octaves = self.load_two_states(octaves)
+
+    def load_patterns(self, data):
+        patterns = json_get(json_get(data, 'controls'), 'patterns')
+        self.patterns = self.load_two_states(patterns)
 
 if __name__ == '__main__':
     pass

@@ -15,13 +15,22 @@ class TkImages:
         self.skin = skin
         self.background = None
         self.pads = []
+        self.tonics = []
+        self.octaves = []
+        self.patterns = []
+
+    def load_two_state_buttons(self, defs, images):
+        for d in defs:
+            image = self.load_image(d.image_path)
+            active_image = self.load_image(d.active_image_path)
+            images.append((image, active_image))
 
     def load(self):
         self.background = self.load_image(self.skin.background)
-        for p in self.skin.pads:
-            image = self.load_image(p.image_path)
-            active_image = self.load_image(p.active_image_path)
-            self.pads.append((image, active_image))
+        self.load_two_state_buttons(self.skin.pads, self.pads)
+        self.load_two_state_buttons(self.skin.tonics, self.tonics)
+        self.load_two_state_buttons(self.skin.octaves, self.octaves)
+        self.load_two_state_buttons(self.skin.patterns, self.patterns)
 
     def load_image(self, path, zoom = 0):
         path = resolve_path(self.skin.resource_dir, path)
@@ -36,6 +45,9 @@ class TkView:
         self.skin = None
         self.root = None
         self.pads = []
+        self.tonics = []
+        self.octaves = []
+        self.patterns = []
         self.images = None
         self.active_pad = None
 
@@ -53,6 +65,9 @@ class TkView:
         self.root.destroy()
         self.root = None
         self.pads = None
+        self.tonics = None
+        self.octaves = None
+        self.patterns = None
         self.images = None
 
     def create_root(self):
@@ -61,18 +76,30 @@ class TkView:
         self.background = Label(self.root, image = self.images.background)
         self.background.pack()
 
-    def create_pads(self):
+    def create_two_state_buttons(self, defs, images, buttons):
         idx = 0
-        for p in self.skin.pads:
-            imgs = self.images.pads[idx]
+        for p in defs:
+            imgs = images[idx]
             b = TkTwoStateButton(self.root, width = p.width, height = p.height,
                                  bg = 'black',
                                  images = imgs)
             idx += 1
-            self.pads.append(b)
+            buttons.append(b)
             b.photo = imgs[0]
             b.defn = p
             b.place(x = p.x, y = p.y)
+
+    def create_pads(self):
+        self.create_two_state_buttons(self.skin.pads, self.images.pads, self.pads)
+
+    def create_tonics(self):
+        self.create_two_state_buttons(self.skin.tonics, self.images.tonics, self.tonics)
+
+    def create_octaves(self):
+        self.create_two_state_buttons(self.skin.octaves, self.images.octaves, self.octaves)
+
+    def create_patterns(self):
+        self.create_two_state_buttons(self.skin.patterns, self.images.patterns, self.patterns)
 
     def create_control(self, cls, defn, bg = None, image = None, args = None):
         if args != None:
@@ -87,6 +114,9 @@ class TkView:
         self.images.load()
         self.create_root()
         self.create_pads()
+        self.create_tonics()
+        self.create_octaves()
+        self.create_patterns()
 
     def set_active_pad(self, pad):
         if self.active_pad:

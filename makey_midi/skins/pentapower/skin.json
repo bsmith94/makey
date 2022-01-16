@@ -54,6 +54,76 @@
             "y" : 100,
             "width" : 10,
             "height" : 10
+        },
+        "instruments":
+        {
+        },
+        "outputs":
+        {
+        },
+        "tonics":
+        {
+            "y" : 41,
+            "width" : 30,
+            "height" : 30,
+            "image-active": "indicator-active.png",
+            "image-inactive": "indicator-inactive.png",
+            "instances":
+            [
+                { "x": 38, "key": "q" },
+                { "x": 74, "key": "w" },
+                { "x": 110, "key": "e" },
+                { "x": 147, "key": "r" },
+                { "x": 184, "key": "t" },
+                { "x": 221, "key": "y" },
+                { "x": 259, "key": "u" },
+                { "x": 296, "key": "i" },
+                { "x": 333, "key": "o" },
+                { "x": 370, "key": "p" },
+                { "x": 407, "key": "[" }
+            ]
+        },
+        "octaves":
+        {
+            "y" : 120,
+            "width" : 36,
+            "height" : 30,
+            "image-active": "indicator-active.png",
+            "image-inactive": "indicator-inactive.png",
+            "instances":
+            [
+                { "x": 37, "key": "1" },
+                { "x": 78, "key": "2" },
+                { "x": 119, "key": "3" },
+                { "x": 161, "key": "4" },
+                { "x": 202, "key": "5" },
+                { "x": 241, "key": "6" },
+                { "x": 281, "key": "7" },
+                { "x": 322, "key": "8" },
+                { "x": 363, "key": "9" },
+                { "x": 404, "key": "0" }
+            ]
+        },
+        "patterns":
+        {
+            "y" : 226,
+            "width" : 36,
+            "height" : 30,
+            "image-active": "indicator-active.png",
+            "image-inactive": "indicator-inactive.png",
+            "instances":
+            [
+                { "x": 37, "key": "a" },
+                { "x": 78, "key": "s" },
+                { "x": 119, "key": "d" },
+                { "x": 161, "key": "f" },
+                { "x": 202, "key": "g" },
+                { "x": 241, "key": "h" },
+                { "x": 281, "key": "j" },
+                { "x": 322, "key": "k" },
+                { "x": 363, "key": "l" },
+                { "x": 404, "key": ";" }
+            ]
         }
     }
 }
