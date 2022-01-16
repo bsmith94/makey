@@ -11,9 +11,9 @@ import time
 
 class Note:
 
-    def __init__(self, number, volume, channel, expiration):
+    def __init__(self, number, velocity, channel, expiration):
         self.number = number
-        self.volume = volume
+        self.velocity = velocity
         self.channel = channel
         self.expiration = expiration
 
@@ -61,7 +61,7 @@ class Silencer:
             for k in list(self.active_notes):
                 n = self.active_notes[k]
                 if period == 0 or (n.expiration != None and n.expiration <= when):
-                    self.midi.player.note_off(n.number, n.volume, n.channel)
+                    self.midi.player.note_off(n.number, n.velocity, n.channel)
                     del self.active_notes[k]
 
     def note_on(self, note):
@@ -105,14 +105,14 @@ class MidiController:
         v = min(p, max(p, MidiController.MIN_PITCH_BEND), MidiController.MAX_PITCH_BEND)
         self.player.pitch_bend(v)
 
-    def play_note(self, number, volume, duration, channel):
-        self.player.note_on(number, volume, channel)
+    def play_note(self, number, velocity, duration, channel):
+        self.player.note_on(number, velocity, channel)
         now = time.time_ns()
         if duration != None:
             exp = now + duration
         else:
             exp = None
-        note = Note(number, volume, channel, exp)
+        note = Note(number, velocity, channel, exp)
         self.silencer.note_on(note)
 
 
