@@ -32,23 +32,28 @@ class UiState:
         self.patterns = [
             {
                 'name' : 'Ionian',
-                'notes' : (0, 2, 4, 7, 9)
+                'notes' : (0, 2, 4, 7, 9),
+                'tonic' : 0
             },
             {
                 'name' : 'Dorian',
-                'notes' : (0, 2, 5, 7, 10)
+                'notes' : (0, 2, 5, 7, 10),
+                'tonic' : 2
             },
             {
                 'name' : 'Phrygian',
-                'notes' : (0, 3, 5, 8, 10)
+                'notes' : (0, 3, 5, 8, 10),
+                'tonic' : 4
             },
             {
                 'name' : 'Mixolydian',
-                'notes' : (0, 2, 5, 7, 9)
+                'notes' : (0, 2, 5, 7, 9),
+                'tonic' : 7
             },
             {
                 'name' : 'Aeolian',
-                'notes' : (0, 3, 5, 7, 10)
+                'notes' : (0, 3, 5, 7, 10),
+                'tonic' : 9
             }
         ]
         self.midi = MidiController(self.cfg)
@@ -65,14 +70,14 @@ class UiState:
             index = 0
         self.pattern = index
 
-    def note_value(self, index):
-        return (self.octave + 1) * 12 + self.tonic + index
+    def note_value(self, degree):
+        return (self.octave + 1) * 12 + self.tonic + degree
 
     def play_note(self, index):
         p = self.patterns[self.pattern]
         numbers = p['notes']
         if index < 0 or index >= len(numbers):
             index = 0
-        nv = self.note_value(numbers[index])
-        #print('play {}'.format(self.midi.midi_to_ansi_note(nv)))
+        nv = self.note_value(numbers[index] + p['tonic'])
+        print('play {}'.format(self.midi.midi_to_ansi_note(nv)))
         self.midi.play_note(nv, self.velocity, self.duration, self.channel)
