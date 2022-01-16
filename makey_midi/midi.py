@@ -19,7 +19,7 @@ class Note:
 
 class Silencer:
 
-    def __init__(self, midi):
+    def __init__(self, midi, period):
         self.midi = midi
         self.cv = None
         self.icoming_vc = None
@@ -27,6 +27,7 @@ class Silencer:
         self.active_notes = None
         self.incoming_active_notes = None
         self.quit_thread = False
+        self.period = period
 
     def start(self):
         self.active_notes = {}
@@ -39,12 +40,12 @@ class Silencer:
 
     def run(self):
         done = False
-        period = 0.1
         while not done:
             with self.cv:
-                self.silence(period)
-                self.cv.wait(period)
+                self.silence(self.period)
+                self.cv.wait(self.period)
                 done = self.quit_thread
+        self.silence(0)
         with self.cv:
             self.cv.notify_all()
 
@@ -72,8 +73,9 @@ class Silencer:
         with self.cv:
             self.quit_thread = True
             self.cv.wait()
-        self.silence(0)
+        self.thread.join()
         self.cv = None
+        self.incoming_cv = None
         self.thread = None
         self.active_notes = None
         self.incoming_active_notes = None
@@ -95,7 +97,7 @@ class MidiController:
         pygame.midi.init()
         self.output = pygame.midi.get_default_output_id()
         self.player = pygame.midi.Output(self.output)
-        self.silencer = Silencer(self)
+        self.silencer = Silencer(self, 0.1)
         self.silencer.start()
 
     def set_instrument(self, instrument, channel):
@@ -114,7 +116,6 @@ class MidiController:
             exp = None
         note = Note(number, velocity, channel, exp)
         self.silencer.note_on(note)
-
 
     def terminate(self):
         self.silencer.quit()
