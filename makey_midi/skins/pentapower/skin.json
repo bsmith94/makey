@@ -15,7 +15,7 @@
         "width": 796,
         "background": "pentapower.png"
     },
-    "buttons":
+    "controls":
     {
         "pads":
         {
@@ -50,7 +50,13 @@
                     "key": "space"
                 }
             ]
+        },
+        "channels" :
+        {
+            "x" : 100,
+            "y" : 100,
+            "width" : 10,
+            "height" : 10
         }
     }
-    
 }

@@ -9,20 +9,44 @@ import os
 import json
 from util import *
 
-class ButtonDef:
 
-    def __init__(self, width, height, x, y, image_path, key):
+class WidgetDef:
+
+    def __init__(self, width = None, height = None, x = None, y = None,
+                 key = None, image_path = None):
         self.width = width
         self.height = height
         self.x = x
         self.y = y
-        self.image_path = image_path
         self.key = key
-        self.image = None
-        self.index = None
+        self.image_path = image_path
+
+    def load(self, data):
+        self.width = json_get(data, 'width')
+        self.height = json_get(data, 'height')
+        self.x = json_get(data, 'x')
+        self.y = json_get(data, 'y')
+        self.key = json_get(data, 'key', required = False )
+        self.image_path = json_get(data, 'image', required = False)
+
+
+class ButtonDef(WidgetDef):
+
+    def __init__(self, width = None, height = None, x = None, y = None,
+                 key = None, image_path = None):
+        super().__init__(width, height, x, y, key, image_path)
+
+    def load(self, data, width = None, height = None, image_path = None):
+        self.width = json_get(data, 'width', def_val = width)
+        self.height = json_get(data, 'height', def_val = height)
+        self.x = json_get(data, 'x')
+        self.y = json_get(data, 'y')
+        self.key = json_get(data, 'key')
+        self.image_path = json_get(data, 'image', def_val = image_path)
+
 
 class Skin:
-    
+
     def __init__(self):
         self.resource_dir = None
         self.path = None
@@ -31,13 +55,6 @@ class Skin:
         self.background = None
         self.pads = []
 
-    def get(self, data, key, required = True, def_val = None):
-        r = def_val
-        if key in data:
-            r = data[key]
-        elif required:
-            raise ValueError('required value {} not specified'.format(key))
-        return r
 
     def load(self, path):
         self.path = path
@@ -46,27 +63,26 @@ class Skin:
             d = json.load(f)
         self.loadRoot(d)
         self.loadPads(d)
+        self.channels = WidgetDef()
+        self.channels.load(json_get(json_get(d, 'controls'), 'channels'))
 
     def loadRoot(self, data):
-        root = self.get(data, 'root')
-        self.title = self.get(root, 'title')
-        self.height = self.get(root, 'height')
-        self.width = self.get(root, 'width')
-        self.background = resolve_path(self.resource_dir, self.get(root, 'background'))
+        root = json_get(data, 'root')
+        self.title = json_get(root, 'title')
+        self.height = json_get(root, 'height')
+        self.width = json_get(root, 'width')
+        self.background = resolve_path(self.resource_dir, json_get(root, 'background'))
 
     def loadPads(self, data):
-        pads = self.get(self.get(data, 'buttons'), 'pads')
-        instances = self.get(pads, 'instances')
+        pads = json_get(json_get(data, 'controls'), 'pads')
+        instances = json_get(pads, 'instances')
         idx = 0
         for p in instances:
-            d = ButtonDef(pads['width'], pads['height'],
-                                       p['x'], p['y'],
-                                       pads['image'], p['key'])
+            d = ButtonDef()
+            d.load(p, pads['width'], pads['height'], pads['image'])
             d.index = idx
             idx += 1
             self.pads.append(d)
 
 if __name__ == '__main__':
     pass
-
-
