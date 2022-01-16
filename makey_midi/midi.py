@@ -65,9 +65,10 @@ class Silencer:
                     self.midi.player.note_off(n.number, n.velocity, n.channel)
                     del self.active_notes[k]
 
-    def note_on(self, note):
+    def note_on(self, notes):
         with self.incoming_cv:
-            self.incoming_active_notes[(note.channel, note.number)] = note
+            for n in notes:
+                self.incoming_active_notes[(n.channel, n.number)] = n
 
     def quit(self):
         with self.cv:
@@ -108,14 +109,19 @@ class MidiController:
         self.player.pitch_bend(v)
 
     def play_note(self, number, velocity, duration, channel):
-        self.player.note_on(number, velocity, channel)
+        if not type(number) is list:
+            number = [number]
+        for n in number:
+            self.player.note_on(n, velocity, channel)
         now = time.time_ns()
         if duration != None:
-            exp = now + duration
+            exp = now + int(duration * 1000000000)
         else:
             exp = None
-        note = Note(number, velocity, channel, exp)
-        self.silencer.note_on(note)
+        notes = []
+        for n in number:
+            notes.append(Note(n, velocity, channel, exp))
+        self.silencer.note_on(notes)
 
     def terminate(self):
         self.silencer.quit()
