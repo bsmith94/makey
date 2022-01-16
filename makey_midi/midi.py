@@ -11,6 +11,9 @@ import time
 
 class Note:
 
+    MIN_VALUE = 0
+    MAX_VALUE = 127
+
     def __init__(self, number, velocity, channel, expiration):
         self.number = number
         self.velocity = velocity
@@ -119,6 +122,9 @@ class MidiController:
             exp = None
         notes = [Note(n, velocity, channel, exp) for n in numbers]
         self.silencer.note_on(notes)
+
+    def midi_to_ansi_note(self, number):
+        return pygame.midi.midi_to_ansi_note(number)
 
     def terminate(self):
         self.silencer.quit()

@@ -155,5 +155,23 @@ class TkView:
     def set_active_pattern(self, button):
         self.patterns.set_active(button)
 
+    def update_button_group(self, buttons, active, setter):
+        if active >= 0 and active < len(buttons):
+            setter(buttons[active])
+
+    def update_octave(self, index):
+        self.update_button_group(self.octaves, index, self.set_active_octave)
+
+    def update_tonic(self, index):
+        self.update_button_group(self.tonics, index, self.set_active_tonic)
+
+    def update_pattern(self, index):
+        self.update_button_group(self.patterns, index, self.set_active_pattern)
+
+    def update(self, model):
+        self.update_octave(model.octave)
+        self.update_tonic(model.tonic)
+        self.update_pattern(model.pattern)
+
 if __name__ == '__main__':
     pass

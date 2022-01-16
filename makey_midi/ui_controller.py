@@ -8,11 +8,19 @@
 
 class TkController:
 
-    def __init__(self, app, view, model):
+    def __init__(self, app, view, model, skin):
         self.app = app
         self.view = view
         self.model = model
+        self.skin = skin
         self.key_map = {}
+
+    def start(self):
+        self.view.create(self.skin)
+        self.wire()
+        self.model.start()
+        self.view.update(self.model)
+        self.view.start()
 
     def wire_button(self, button, click, key_down, handler):
         button.bind('<Button-1>', click)
@@ -38,7 +46,7 @@ class TkController:
 
     def terminate(self):
         self.view.destroy()
-        self.model.terminate()
+        self.model.stop()
         self.key_map = None
         self.view = None
         self.model = None
@@ -49,17 +57,20 @@ class TkController:
             b['widget'].handler(event, b['widget'])
 
     def _pad_hit(self, event, pad):
-        self.model.play_note([60 + pad.defn.index], 127, 0.3, 0)
+        self.model.play_note(pad.defn.index)
         self.view.set_active_pad(pad)
 
     def _octave_hit(self, event, button):
         self.view.set_active_octave(button)
+        self.model.octave = button.defn.index
 
     def _tonic_hit(self, event, button):
         self.view.set_active_tonic(button)
+        self.model.tonic = button.defn.index
 
     def _pattern_hit(self, event, button):
         self.view.set_active_pattern(button)
+        self.model.set_pattern(button.defn.index)
 
     def button_hit(self, event):
         event.widget.handler(event, event.widget)

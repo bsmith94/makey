@@ -8,9 +8,9 @@
 import json
 import os
 from view import TkView
-from midi import MidiController
 from skin import Skin
 from ui_controller import TkController
+from ui_state import UiState
 from util import *
 
 class App:
@@ -18,23 +18,19 @@ class App:
     def __init__(self, cfg):
         self.cfg = cfg
         self.skin = Skin()
-        self.midi = MidiController(cfg)
         self.view = TkView()
-        self.ctl = TkController(self, self.view, self.midi)
+        self.model = UiState(cfg)
+        self.ctl = TkController(self, self.view, self.model, self.skin)
 
     def start(self):
         self.skin.load(resolve_path(self.cfg.home, self.cfg['DEFAULT']['skin']))
-        self.view.create(self.skin)
-        self.ctl.wire()
-        self.midi.start()
-        self.midi.set_instrument(0, 0)
-        self.view.start()
-    
+        self.ctl.start()
+
 if __name__ == '__main__':
 
     import argparse
     import configparser
-    
+
     script_home = os.path.dirname(os.path.realpath(__file__))
     parser = argparse.ArgumentParser()
     parser.add_argument('--config', default='{}/makey_midi.cfg'.format(script_home))
@@ -49,4 +45,3 @@ if __name__ == '__main__':
     config.home = cfg_dir
     app = App(config)
     app.start()
-
