@@ -22,6 +22,10 @@ def json_get(data, key, required = True, def_val = None, context = None):
         raise ValueError('required value {} {} not specified'.format(context, key))
     return r
 
+def json_gets(data, valmap, required = False, context = None):
+    r = {k:json_get(data, k, required = required, def_val = valmap[k], context = context) for k in valmap}
+    return r
+
 if __name__ == '__main__':
     pass
 

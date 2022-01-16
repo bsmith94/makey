@@ -59,6 +59,11 @@ class TwoStateButtonDef(ButtonDef):
     def image_path(self):
         return 'image-inactive'
 
+class TextLabelDef(WidgetDef):
+
+    def __init__(self, attrs):
+        self.attrs = attrs
+
 class Skin:
 
     def __init__(self):
@@ -82,6 +87,7 @@ class Skin:
         self.load_tonics(d)
         self.load_octaves(d)
         self.load_patterns(d)
+        self.load_text_labels(d)
         #self.channels = WidgetDef()
         #self.channels.load(json_get(json_get(d, 'controls'), 'channels'))
 
@@ -125,6 +131,32 @@ class Skin:
     def load_patterns(self, data):
         patterns = json_get(json_get(data, 'controls'), 'patterns')
         self.patterns = self.load_two_states(patterns)
+
+    def load_label_def(self, data, defs):
+        if data == None:
+            return None
+        vals = defs.copy()
+        vals = json_gets(data, vals, required = True)
+        return TextLabelDef(vals)
+
+    def load_text_labels(self, data):
+        data = json_get(json_get(data, 'controls'), 'text-labels')
+        defs = json_gets(data, {
+            'font' :  'Courier',
+            'font-size' :  16,
+            'height' :  1,
+            'width' : 8,
+            'background': 'black',
+            'color' : 'white',
+            'borderwidth' : 0,
+            'relief' : 'sunken',
+            'align' : 'left',
+            'x' : None,
+            'y' : None
+        }, required = False)
+        self.pattern_name = self.load_label_def(json_get(json_get(data, 'instances'),
+                                                         'pattern-name', required = False), defs)
+
 
 if __name__ == '__main__':
     pass

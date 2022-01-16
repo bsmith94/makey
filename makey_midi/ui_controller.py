@@ -71,6 +71,7 @@ class TkController:
     def _pattern_hit(self, event, button):
         self.view.set_active_pattern(button)
         self.model.set_pattern(button.defn.index)
+        self.view.update_pattern_name(self.model.get_pattern_name())
 
     def button_hit(self, event):
         event.widget.handler(event, event.widget)

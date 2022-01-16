@@ -68,6 +68,7 @@ class TkView:
         self.octaves = []
         self.patterns = []
         self.images = None
+        self.pattern_name = None
         self.active_pad = None
 
     def create(self, skin):
@@ -88,6 +89,7 @@ class TkView:
         self.octaves = None
         self.patterns = None
         self.images = None
+        self.pattern_name = None
 
     def create_root(self):
         self.root.title(self.skin.title)
@@ -126,14 +128,34 @@ class TkView:
         b = self.create_two_state_buttons(self.skin.patterns, self.images.patterns)
         self.patterns = TkButtonGroup(b)
 
-    def create_control(self, cls, defn, bg = None, image = None, args = None):
-        if args != None:
-            ctl = cls(self.root, width = defn.width, height = defn.height, bg=bg, image = image, **args)
-        else:
-            ctl = cls(self.root, width = defn.width, height = defn.height, bg=bg, image = image)
-        ctl.place(x = defn.x, y = defn.y)
-        ctl.defn = defn
-        return ctl
+    def create_text_label(self, defn):
+        r = None
+        if defn:
+            attrs = defn.attrs.copy()
+            align = attrs['align']
+            if align == 'left':
+                attrs['anchor'] = 'w'
+            elif align == 'right':
+                attrs['anchor'] = 'e'
+            attrs['justify'] = align
+            del attrs['align']
+            attrs['bg'] = attrs['background']
+            del attrs['background']
+            attrs['fg'] = attrs['color']
+            del attrs['color']
+            attrs['font'] = (attrs['font'], attrs['font-size'])
+            del attrs['font-size']
+            x = attrs['x']
+            del attrs['x']
+            y = attrs['y']
+            del attrs['y']
+
+            r = Label(self.root, text = "", **attrs)
+            r.place(x = x, y = y)
+        return r
+
+    def create_pattern_name(self):
+        self.pattern_name = self.create_text_label(self.skin.pattern_name)
 
     def create_ui(self):
         self.images.load()
@@ -142,6 +164,7 @@ class TkView:
         self.create_tonics()
         self.create_octaves()
         self.create_patterns()
+        self.create_pattern_name()
 
     def set_active_pad(self, pad):
         self.pads.set_active(pad)
@@ -165,13 +188,18 @@ class TkView:
     def update_tonic(self, index):
         self.update_button_group(self.tonics, index, self.set_active_tonic)
 
-    def update_pattern(self, index):
+    def update_pattern(self, index, name):
         self.update_button_group(self.patterns, index, self.set_active_pattern)
+        self.update_pattern_name(name)
+
+    def update_pattern_name(self, name):
+        if self.pattern_name:
+            self.pattern_name.configure(text = " " + name)
 
     def update(self, model):
         self.update_octave(model.octave)
         self.update_tonic(model.tonic)
-        self.update_pattern(model.pattern)
+        self.update_pattern(model.pattern, model.get_pattern_name())
 
 if __name__ == '__main__':
     pass

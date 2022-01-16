@@ -124,6 +124,24 @@
                 { "x": 363, "key": "l" },
                 { "x": 404, "key": "semicolon" }
             ]
+        },
+        "text-labels":
+        {
+            "font" : "Courier",
+            "font-size": 16,
+            "height": 1,
+            "background": "black",
+            "color": "green",
+            "borderwidth" : 1,
+            "relief" : "sunken",
+            "instances" : {
+                "pattern-name" : {
+                    "width" : 35,
+                    "x" : 30,
+                    "y" : 200,
+                    "align" : "left"
+                }
+            }
         }
     }
 }

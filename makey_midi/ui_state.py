@@ -70,6 +70,9 @@ class UiState:
             index = 0
         self.pattern = index
 
+    def get_pattern_name(self):
+        return self.patterns[self.pattern]['name']
+
     def note_value(self, degree):
         return (self.octave + 1) * 12 + self.tonic + degree
 
@@ -79,5 +82,5 @@ class UiState:
         if index < 0 or index >= len(numbers):
             index = 0
         nv = self.note_value(numbers[index] + p['tonic'])
-        print('play {}'.format(self.midi.midi_to_ansi_note(nv)))
+        #print('play {}'.format(self.midi.midi_to_ansi_note(nv)))
         self.midi.play_note(nv, self.velocity, self.duration, self.channel)
