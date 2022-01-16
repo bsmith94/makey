@@ -102,9 +102,10 @@ class MidiController:
             exp = now + duration
         else:
             exp = None
+        self.player.note_on(number, volume, channel)
         note = Note(number, volume, channel, exp)
         self.silencer.note_on(note)
-        self.player.note_on(number, volume, channel)
+
 
     def terminate(self):
         self.silencer.quit()
