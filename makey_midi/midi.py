@@ -57,7 +57,7 @@ class Silencer:
             when = now + self._duration_nanos(period / 2)
             with self.incoming_cv:
                 self.active_notes.update(self.incoming_active_notes)
-                self.incoming_active_notes = {}
+                self.incoming_active_notes.clear()
             for k in list(self.active_notes):
                 n = self.active_notes[k]
                 if period == 0 or (n.expiration != None and n.expiration <= when):
