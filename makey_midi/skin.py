@@ -61,19 +61,19 @@ class Skin:
         self.resource_dir = os.path.dirname(os.path.realpath(path))
         with open(path) as f:
             d = json.load(f)
-        self.loadRoot(d)
-        self.loadPads(d)
+        self.load_root(d)
+        self.load_pads(d)
         self.channels = WidgetDef()
         self.channels.load(json_get(json_get(d, 'controls'), 'channels'))
 
-    def loadRoot(self, data):
+    def load_root(self, data):
         root = json_get(data, 'root')
         self.title = json_get(root, 'title')
         self.height = json_get(root, 'height')
         self.width = json_get(root, 'width')
         self.background = resolve_path(self.resource_dir, json_get(root, 'background'))
 
-    def loadPads(self, data):
+    def load_pads(self, data):
         pads = json_get(json_get(data, 'controls'), 'pads')
         instances = json_get(pads, 'instances')
         idx = 0

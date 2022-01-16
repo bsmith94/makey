@@ -16,12 +16,12 @@ class TkImages:
         self.pads = []
 
     def load(self):
-        self.background = self.loadImage(self.skin.background)
+        self.background = self.load_image(self.skin.background)
         for p in self.skin.pads:
-            image = self.loadImage(p.image_path)
+            image = self.load_image(p.image_path)
             self.pads.append(image)
 
-    def loadImage(self, path, zoom = 0):
+    def load_image(self, path, zoom = 0):
         path = resolve_path(self.skin.resource_dir, path)
         i = PhotoImage(file = path)
         if zoom:
@@ -40,7 +40,7 @@ class TkView:
         self.skin = skin
         self.images = TkImages(skin)
         self.root = Tk()
-        self.createUi()
+        self.create_ui()
 
     def start(self):
         self.root.focus()
@@ -52,29 +52,37 @@ class TkView:
         self.pads = None
         self.images = None
 
-    def createRoot(self):
+    def create_root(self):
         self.root.title(self.skin.title)
         self.root.geometry('{}x{}'.format(self.skin.width, self.skin.height))
         self.background = Label(self.root, image = self.images.background)
         self.background.pack()
 
-    def createPads(self):
+    def create_pads(self):
         idx = 0
         for p in self.skin.pads:
             img = self.images.pads[idx]
-            l = Label(self.root, width = p.width, height = p.height,
-                       bg='black', image=img)
+            #l = Label(self.root, width = p.width, height = p.height,
+            #           bg='black', image=img)
+            l = self.create_control(Label, p, 'black', img)
             idx += 1
             self.pads.append(l)
             l.photo = img
             l.defn = p
-            l.place(x=p.x, y=p.y)
 
-    def createUi(self):
-        # skin.resolve() must be invoked after Tk is created
+    def create_control(self, cls, defn, bg = None, image = None, args = None):
+        if args != None:
+            ctl = cls(self.root, width = defn.width, height = defn.height, bg=bg, image = image, **args)
+        else:
+            ctl = cls(self.root, width = defn.width, height = defn.height, bg=bg, image = image)
+        ctl.place(x = defn.x, y = defn.y)
+        ctl.defn = defn
+        return ctl
+
+    def create_ui(self):
         self.images.load()
-        self.createRoot()
-        self.createPads()
+        self.create_root()
+        self.create_pads()
 
 if __name__ == '__main__':
     pass
