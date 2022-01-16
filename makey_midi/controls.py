@@ -16,6 +16,7 @@ class TkTwoStateButton(Label):
         self.active = False
 
     def set_active(self, active):
+        active =(False,True)[active]
         img = self.images[active]
         self.active = active
         self.config(image = img)
