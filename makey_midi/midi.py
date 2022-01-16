@@ -52,7 +52,7 @@ class Silencer:
             when = now + self._duration_nanos(period / 2)
             for k in list(self.active_notes):
                 n = self.active_notes[k]
-                if period == 0 or (n.expiration >= 0 and n.expiration <= when):
+                if period == 0 or (n.expiration != None and n.expiration <= when):
                     self.midi.player.note_off(n.number, n.volume, n.channel)
                     del self.active_notes[k]
 
@@ -101,7 +101,7 @@ class MidiController:
         if duration != None:
             exp = now + duration
         else:
-            exp = -1
+            exp = None
         note = Note(number, volume, channel, exp)
         self.silencer.note_on(note)
         self.player.note_on(number, volume, channel)
