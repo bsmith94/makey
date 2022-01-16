@@ -79,7 +79,6 @@ class MidiController:
         self.cfg = cfg
         self.output = None
         self.player = None
-        self.duration = 0.1
         self.silencer = None
 
     def start(self):
@@ -97,10 +96,10 @@ class MidiController:
         v = min(p, max(p, MidiController.MIN_PITCH_BEND), MidiController.MAX_PITCH_BEND)
         self.player.pitch_bend(v)
 
-    def play_note(self, number, volume, channel):
+    def play_note(self, number, volume, duration, channel):
         now = time.time_ns()
-        if self.duration != None:
-            exp = now + self.duration
+        if duration != None:
+            exp = now + duration
         else:
             exp = -1
         note = Note(number, volume, channel, exp)

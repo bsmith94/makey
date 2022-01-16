@@ -33,7 +33,7 @@ class TkController:
             b['handler'](event, b['widget'])
 
     def _padHit(self, event, pad):
-        self.model.play_note(60 + pad.defn.index, 127, 0)
+        self.model.play_note(60 + pad.defn.index, 127, 0.1, 0)
 
     def padHit(self, event):
         self._padHit(event, event.widget)
