@@ -5,6 +5,7 @@
 # UI event handlers.
 #
 
+
 class TkController:
 
     def __init__(self, app, view, model):
@@ -34,6 +35,7 @@ class TkController:
 
     def _pad_hit(self, event, pad):
         self.model.play_note(60 + pad.defn.index, 127, 0.1, 0)
+        self.view.set_active_pad(pad)
 
     def pad_hit(self, event):
         self._pad_hit(event, event.widget)

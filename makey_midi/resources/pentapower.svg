@@ -8,7 +8,7 @@
    version="1.1"
    id="svg5"
    inkscape:version="1.1.1 (c3084ef, 2021-09-22)"
-   sodipodi:docname="makeymidi.svg"
+   sodipodi:docname="pentapower.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -25,20 +25,44 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="1"
-     inkscape:cx="362.5"
-     inkscape:cy="265"
+     inkscape:cx="279.5"
+     inkscape:cy="281"
      inkscape:window-width="1312"
      inkscape:window-height="800"
      inkscape:window-x="0"
      inkscape:window-y="25"
      inkscape:window-maximized="0"
-     inkscape:current-layer="layer2"
+     inkscape:current-layer="layer3"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0" />
   <defs
      id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient12798">
+      <stop
+         style="stop-color:#999999;stop-opacity:1;"
+         offset="0"
+         id="stop12794" />
+      <stop
+         style="stop-color:#999999;stop-opacity:0;"
+         offset="1"
+         id="stop12796" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient252">
+      <stop
+         style="stop-color:#4d4d4d;stop-opacity:1"
+         offset="0"
+         id="stop248" />
+      <stop
+         style="stop-color:#000000;stop-opacity:1"
+         offset="1"
+         id="stop250" />
+    </linearGradient>
     <rect
        x="25"
        y="363"
@@ -66,12 +90,108 @@
        x2="517.78961"
        y2="327.55417"
        gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient35664">
+      <stop
+         style="stop-color:#00ff00;stop-opacity:1;"
+         offset="0"
+         id="stop35660" />
+      <stop
+         style="stop-color:#1c7100;stop-opacity:0.95294118"
+         offset="1"
+         id="stop35662" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient35292">
+      <stop
+         style="stop-color:#00ff00;stop-opacity:1;"
+         offset="0"
+         id="stop35288" />
+      <stop
+         style="stop-color:#00ff00;stop-opacity:0;"
+         offset="1"
+         id="stop35290" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient35292"
+       id="radialGradient35294"
+       cx="63.090294"
+       cy="71.311752"
+       fx="63.090294"
+       fy="71.311752"
+       r="7.8279862"
+       gradientTransform="translate(0,-1.7375653e-5)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient35664"
+       id="linearGradient35466"
+       x1="57.679165"
+       y1="69.320831"
+       x2="70.643753"
+       y2="71.17292"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient252"
+       id="linearGradient35466-3"
+       x1="57.679165"
+       y1="69.320831"
+       x2="70.643753"
+       y2="71.17292"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(24.817516,19.175748)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient252"
+       id="linearGradient35466-3-9"
+       x1="57.679165"
+       y1="69.320831"
+       x2="70.643753"
+       y2="71.17292"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(43.933654,19.175748)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient252"
+       id="linearGradient35466-3-3"
+       x1="57.679165"
+       y1="69.320831"
+       x2="70.643753"
+       y2="71.17292"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(63.049796,19.175748)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient252"
+       id="linearGradient35466-3-5"
+       x1="57.679165"
+       y1="69.320831"
+       x2="70.643753"
+       y2="71.17292"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(82.165941,19.175748)" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient12798"
+       id="radialGradient12802"
+       cx="66.020088"
+       cy="55.575756"
+       fx="66.020088"
+       fy="55.575756"
+       r="5.9589829"
+       gradientTransform="matrix(1,0,0,0.32112506,0,37.728989)"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-90.752083)">
+     transform="translate(0,-90.752083)"
+     style="display:inline">
     <rect
        style="fill:url(#linearGradient159);fill-opacity:1;stroke-width:0.264583"
        id="rect121"
@@ -92,7 +212,8 @@
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="logo"
-     transform="translate(0,-90.752083)">
+     transform="translate(0,-90.752083)"
+     style="display:inline">
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-3.4395833,-3.7041667)"
@@ -100,12 +221,314 @@
        style="font-style:normal;font-weight:normal;font-size:26.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect5713);fill:#f2f2f2;fill-opacity:1;stroke:none"><tspan
          x="25"
          y="388.07434"
-         id="tspan34920"><tspan
+         id="tspan21487"><tspan
            style="font-family:Helvetica;-inkscape-font-specification:Helvetica"
-           id="tspan34914">makey </tspan><tspan
+           id="tspan21481">makey </tspan><tspan
            style="font-family:Monaco;-inkscape-font-specification:Monaco"
-           id="tspan34916">MIDI </tspan><tspan
+           id="tspan21483">MIDI </tspan><tspan
            style="font-weight:bold;font-size:17.3333px;font-family:Zapfino;-inkscape-font-specification:'Zapfino Bold'"
-           id="tspan34918">PentaPower 1</tspan></tspan></text>
+           id="tspan21485">PentaPower 1</tspan></tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="labels"
+     style="display:inline">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 9.2604166,17.4625 c 0,0.705555 0,1.411111 0,2.116666 0,1.234723 0,2.469445 0,3.704167 0,0.823148 0,1.881481 0,1.058333"
+       id="path6230" />
+    <path
+       style="fill:none;stroke:#787880;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 9.3927076,21.166669 v 6.879166 H 123.95729 V 21.167"
+       id="path6458"
+       sodipodi:nodetypes="cccc" />
+    <path
+       style="fill:none;stroke:#787880;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 9.3927086,49.616666 v 6.879166 H 123.95729 V 49.617"
+       id="path6458-1"
+       sodipodi:nodetypes="cccc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;fill:#999999;fill-opacity:1;stroke:none;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none"
+       x="60.450745"
+       y="55.562492"
+       id="text10572"><tspan
+         sodipodi:role="line"
+         id="tspan10570"
+         style="font-size:4.23333px;fill:#999999;fill-opacity:1;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none"
+         x="60.450745"
+         y="55.562492">scale</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;display:inline;fill:#999999;fill-opacity:1;stroke:none;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none"
+       x="58.487728"
+       y="26.974209"
+       id="text10572-0"><tspan
+         sodipodi:role="line"
+         id="tspan10570-0"
+         style="font-size:4.23333px;fill:#999999;fill-opacity:1;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none"
+         x="58.487728"
+         y="26.974209">octave</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;display:inline;fill:#999999;fill-opacity:1;stroke:none;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none"
+       x="133.39958"
+       y="14.595291"
+       id="text10572-0-0"><tspan
+         sodipodi:role="line"
+         id="tspan10570-0-4"
+         style="font-size:4.23333px;fill:#999999;fill-opacity:1;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none"
+         x="133.39958"
+         y="14.595291">channel</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;display:inline;fill:#999999;fill-opacity:1;stroke:none;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none"
+       x="133.2549"
+       y="26.127804"
+       id="text10572-0-0-0"
+       inkscape:transform-center-x="3.7041667"
+       inkscape:transform-center-y="-6.3500001"><tspan
+         sodipodi:role="line"
+         id="tspan10570-0-4-3"
+         style="font-size:4.23333px;fill:#999999;fill-opacity:1;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none"
+         x="133.2549"
+         y="26.127804">instrument</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="controls"
+     style="display:inline">
+    <g
+       id="g21397">
+      <g
+         inkscape:label="Layer 1"
+         id="layer1-5"
+         transform="translate(5.701371,19.175748)"
+         inkscape:export-filename="/Users/bsmith/dev/bsmith/makey/makey_midi/skins/pentapower/pad.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96">
+        <rect
+           style="fill:url(#radialGradient35294);fill-opacity:1;stroke:#3398fd;stroke-width:0.465;stroke-linejoin:round"
+           id="rect35097"
+           width="15.190972"
+           height="15.190976"
+           x="55.494808"
+           y="63.716263"
+           ry="2.9104166"
+           inkscape:export-filename="/Users/bsmith/dev/bsmith/makey/button.png"
+           inkscape:export-xdpi="96"
+           inkscape:export-ydpi="96" />
+        <rect
+           style="fill:url(#linearGradient35466);fill-opacity:1;stroke:#3398fd;stroke-width:0.465;stroke-linejoin:round"
+           id="rect35296"
+           width="15.190975"
+           height="15.190978"
+           x="55.494808"
+           y="63.716263"
+           ry="2.9104166"
+           inkscape:export-filename="/Users/bsmith/dev/bsmith/makey/button.png"
+           inkscape:export-xdpi="96"
+           inkscape:export-ydpi="96" />
+      </g>
+      <rect
+         style="fill:url(#linearGradient35466-3);fill-opacity:1;stroke:#3398fd;stroke-width:0.465;stroke-linejoin:round"
+         id="rect35296-3"
+         width="15.191"
+         height="15.190978"
+         x="80.312317"
+         y="82.892006"
+         ry="2.9104166"
+         inkscape:export-filename="/Users/bsmith/dev/bsmith/makey/makey_midi/skins/pentapower/pad-inactive.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <rect
+         style="fill:url(#linearGradient35466-3-9);fill-opacity:1;stroke:#3398fd;stroke-width:0.465;stroke-linejoin:round"
+         id="rect35296-3-0"
+         width="15.191"
+         height="15.190978"
+         x="99.428467"
+         y="82.892006"
+         ry="2.9104166"
+         inkscape:export-filename="/Users/bsmith/dev/bsmith/makey/button.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <rect
+         style="fill:url(#linearGradient35466-3-3);fill-opacity:1;stroke:#3398fd;stroke-width:0.465;stroke-linejoin:round"
+         id="rect35296-3-6"
+         width="15.191"
+         height="15.190978"
+         x="118.54459"
+         y="82.892006"
+         ry="2.9104166"
+         inkscape:export-filename="/Users/bsmith/dev/bsmith/makey/button.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <rect
+         style="fill:url(#linearGradient35466-3-5);fill-opacity:1;stroke:#3398fd;stroke-width:0.465;stroke-linejoin:round"
+         id="rect35296-3-2"
+         width="15.191"
+         height="15.190978"
+         x="137.66074"
+         y="82.892006"
+         ry="2.9104166"
+         inkscape:export-filename="/Users/bsmith/dev/bsmith/makey/button.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+    </g>
+    <g
+       id="g15350">
+      <circle
+         style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path559-8-1"
+         cx="39.35556"
+         cy="19.314581"
+         r="3.25" />
+      <circle
+         style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path559-8-5"
+         cx="50.283337"
+         cy="19.314581"
+         r="3.25" />
+      <circle
+         style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path559-8-3"
+         cx="61.211113"
+         cy="19.314581"
+         r="3.25" />
+      <circle
+         style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path559-8-54"
+         cx="72.138893"
+         cy="19.314581"
+         r="3.25" />
+      <circle
+         style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path559-8-36"
+         cx="83.066666"
+         cy="19.314581"
+         r="3.25" />
+      <circle
+         style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path559-8-59"
+         cx="93.994446"
+         cy="19.314581"
+         r="3.25" />
+      <circle
+         style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path559-8-549"
+         cx="115.85"
+         cy="19.314581"
+         r="3.25" />
+      <circle
+         style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path559-8-17"
+         cx="104.92223"
+         cy="19.314581"
+         r="3.25" />
+      <circle
+         style="fill:#ff0000;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path559"
+         cx="17.500004"
+         cy="19.314583"
+         r="3.25" />
+      <circle
+         style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path559-8"
+         cx="28.427782"
+         cy="19.314583"
+         r="3.25" />
+    </g>
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.30116;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect5644"
+       width="104.69884"
+       height="9.42484"
+       x="15.131387"
+       y="32.858471" />
+    <g
+       id="g21388">
+      <circle
+         style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path559-8-1-7"
+         cx="39.620144"
+         cy="47.624996"
+         r="3.25" />
+      <circle
+         style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path559-8-5-8"
+         cx="50.54792"
+         cy="47.624996"
+         r="3.25" />
+      <circle
+         style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path559-8-3-4"
+         cx="61.475697"
+         cy="47.624996"
+         r="3.25" />
+      <circle
+         style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path559-8-54-1"
+         cx="72.403473"
+         cy="47.624996"
+         r="3.25" />
+      <circle
+         style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path559-8-36-7"
+         cx="83.331245"
+         cy="47.624996"
+         r="3.25" />
+      <circle
+         style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path559-8-59-1"
+         cx="94.259026"
+         cy="47.624996"
+         r="3.25" />
+      <circle
+         style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path559-8-549-8"
+         cx="116.11458"
+         cy="47.624996"
+         r="3.25" />
+      <circle
+         style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path559-8-17-7"
+         cx="105.18681"
+         cy="47.624996"
+         r="3.25" />
+      <circle
+         style="fill:#ff0000;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path559-87"
+         cx="17.764587"
+         cy="47.625"
+         r="3.25"
+         inkscape:export-filename="/Users/bsmith/dev/bsmith/makey/makey_midi/skins/pentapower/indicator-active.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <circle
+         style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path559-8-7"
+         cx="28.692366"
+         cy="47.625"
+         r="3.25"
+         inkscape:export-filename="/Users/bsmith/dev/bsmith/makey/makey_midi/skins/pentapower/indicator-inactive.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+    </g>
+    <rect
+       style="display:inline;fill:#999999;fill-opacity:1;stroke:#787880;stroke-width:0.30544;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect15820"
+       width="74.077896"
+       height="6.0832596"
+       x="131.36835"
+       y="4.5009694" />
+    <rect
+       style="display:inline;fill:#999999;fill-opacity:1;stroke:#787880;stroke-width:0.30544;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect15820-6"
+       width="74.077896"
+       height="6.0832596"
+       x="131.36835"
+       y="16.092392" />
   </g>
 </svg>

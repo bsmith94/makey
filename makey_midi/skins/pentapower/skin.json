@@ -21,7 +21,8 @@
         {
             "width": 53,
             "height": 53,
-            "image": "pad.png",
+            "image-active": "pad-active.png",
+            "image-inactive": "pad-inactive.png",
             "instances":
             [
                 {
