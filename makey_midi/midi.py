@@ -22,13 +22,18 @@ class Silencer:
     def __init__(self, midi):
         self.midi = midi
         self.cv = None
+        self.icoming_vc = None
         self.thread = None
-        self.active_notes = {}
+        self.active_notes = None
+        self.incoming_active_notes = None
         self.quit_thread = False
 
     def start(self):
+        self.active_notes = {}
+        self.incoming_active_notes = {}
         self.quit_thread = False
         self.cv = threading.Condition()
+        self.incoming_cv = threading.Condition()
         self.thread = threading.Thread(target = self.run)
         self.thread.start()
 
@@ -50,6 +55,9 @@ class Silencer:
         with self.cv:
             now = time.time_ns()
             when = now + self._duration_nanos(period / 2)
+            with self.incoming_cv:
+                self.active_notes.update(self.incoming_active_notes)
+                self.incoming_active_notes = {}
             for k in list(self.active_notes):
                 n = self.active_notes[k]
                 if period == 0 or (n.expiration != None and n.expiration <= when):
@@ -57,8 +65,8 @@ class Silencer:
                     del self.active_notes[k]
 
     def note_on(self, note):
-        with self.cv:
-            self.active_notes[(note.channel, note.number)] = note
+        with self.incoming_cv:
+            self.incoming_active_notes[(note.channel, note.number)] = note
 
     def quit(self):
         with self.cv:
@@ -68,6 +76,7 @@ class Silencer:
         self.cv = None
         self.thread = None
         self.active_notes = None
+        self.incoming_active_notes = None
 
 
 class MidiController:
@@ -97,12 +106,12 @@ class MidiController:
         self.player.pitch_bend(v)
 
     def play_note(self, number, volume, duration, channel):
+        self.player.note_on(number, volume, channel)
         now = time.time_ns()
         if duration != None:
             exp = now + duration
         else:
             exp = None
-        self.player.note_on(number, volume, channel)
         note = Note(number, volume, channel, exp)
         self.silencer.note_on(note)
 
