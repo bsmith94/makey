@@ -10,9 +10,8 @@ from tkinter import *
 
 class TkTwoStateButton(Label):
 
-    def __init__(self, parent, width = None, height = None, bg = None, images = None):
-        super().__init__(parent, width = width, height = height, bg = bg,
-                         image = (None, images[0])[images != None])
+    def __init__(self, parent, images = None, **kwargs):
+        super().__init__(parent, image = (None, images[0])[images != None], **kwargs)
         self.images = images
         self.active = False
 
