@@ -108,19 +108,16 @@ class MidiController:
         v = min(p, max(p, MidiController.MIN_PITCH_BEND), MidiController.MAX_PITCH_BEND)
         self.player.pitch_bend(v)
 
-    def play_note(self, number, velocity, duration, channel):
-        if not type(number) is list:
-            number = [number]
-        for n in number:
-            self.player.note_on(n, velocity, channel)
+    def play_note(self, numbers, velocity, duration, channel):
+        if not type(numbers) is list:
+            numbers = [numbers]
+        [self.player.note_on(n, velocity, channel) for n in numbers]
         now = time.time_ns()
         if duration != None:
             exp = now + int(duration * 1000000000)
         else:
             exp = None
-        notes = []
-        for n in number:
-            notes.append(Note(n, velocity, channel, exp))
+        notes = [Note(n, velocity, channel, exp) for n in numbers]
         self.silencer.note_on(notes)
 
     def terminate(self):
