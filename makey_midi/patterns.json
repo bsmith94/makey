@@ -1,0 +1,77 @@
+{
+    "banks": [
+        {
+            "name" : "Pentatonics",
+            "patterns":
+            [
+                {
+                    "name" : "Ionian",
+                    "tonic" : 0,
+                    "pattern" : [0, 2, 4, 7, 9]
+                },
+                {
+                    "name" : "Dorian",
+                    "tonic" : 2,
+                    "pattern" : [0, 2, 5, 7, 10]
+                },
+                {
+                    "name" : "Phrygian",
+                    "tonic" : 4,
+                    "pattern" : [0, 3, 5, 8, 10]
+                },
+                {
+                    "name" : "Mixolydian",
+                    "tonic" : 7,
+                    "pattern" : [0, 2, 5, 7, 9]
+                },
+                {
+                    "name" : "Aeolian",
+                    "tonic" : 9,
+                    "pattern" : [0, 3, 5, 7, 10]
+                },
+                {
+                    "name" : "Chromatic Low",
+                    "tonic" : 0,
+                    "pattern" : [0, 1, 2, 3, 4]
+                },
+                {
+                    "name" : "Chromatic Mid",
+                    "tonic" : 0,
+                    "pattern" : [5, 6, 7, 8, 9]
+                },
+                {
+                    "name" : "Chromatic High",
+                    "tonic" : 0,
+                    "pattern" : [10, 11, 12, 13, 14]
+                },
+                {
+                    "name" : "Whole Tone Low",
+                    "tonic" : 0,
+                    "pattern" : [0, 2, 4, 6, 8]
+                },
+                {
+                    "name" : "Whole Tone High",
+                    "tonic" : 0,
+                    "pattern" : [10, 12, 14, 16, 18]
+                }
+            ]
+        },
+        {
+            "name" : "Chords",
+            "patterns":
+            [
+                {
+                    "name" : "I",
+                    "tonic" : 0,
+                    "pattern" : [
+                        { "name": "I", "degrees": [0, 4, 7] },
+                        { "name": "Im", "degrees": [0, 4, 7] },
+                        { "name": "Im7", "degrees": [0, 4, 7] },
+                        { "name": "I7", "degrees": [0, 4, 7] },
+                        { "name": "Imaj7", "degrees": [0, 4, 7] }
+                    ]
+                }
+            ]
+        },
+    ]
+}
