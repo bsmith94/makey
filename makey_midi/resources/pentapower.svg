@@ -2,13 +2,16 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="210.60834mm"
-   height="107.15625mm"
-   viewBox="0 0 210.60834 107.15625"
+   width="799"
+   height="410"
+   viewBox="0 0 211.40208 108.47917"
    version="1.1"
    id="svg5"
    inkscape:version="1.1.1 (c3084ef, 2021-09-22)"
    sodipodi:docname="pentapower.svg"
+   inkscape:export-filename="/Users/bsmith/dev/bsmith/makey/makey_midi/skins/pentapower/pentapower.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -20,13 +23,13 @@
      bordercolor="#666666"
      borderopacity="1.0"
      inkscape:pageshadow="2"
-     inkscape:pageopacity="0.0"
+     inkscape:pageopacity="0"
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="1"
-     inkscape:cx="279.5"
-     inkscape:cy="281"
+     inkscape:cx="261.5"
+     inkscape:cy="235"
      inkscape:window-width="1312"
      inkscape:window-height="800"
      inkscape:window-x="0"
@@ -36,7 +39,9 @@
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
-     fit-margin-bottom="0" />
+     fit-margin-bottom="0"
+     width="210mm"
+     units="px" />
   <defs
      id="defs2">
     <linearGradient
@@ -89,7 +94,8 @@
        y1="106.3625"
        x2="517.78961"
        y2="327.55417"
-       gradientUnits="userSpaceOnUse" />
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.0046492,0,0,1.0133566,0,-0.68297923)" />
     <linearGradient
        inkscape:collect="always"
        id="linearGradient35664">
@@ -143,7 +149,7 @@
        x2="70.643753"
        y2="71.17292"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(24.817516,19.175748)" />
+       gradientTransform="translate(24.817516,19.704915)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient252"
@@ -153,7 +159,7 @@
        x2="70.643753"
        y2="71.17292"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(43.933654,19.175748)" />
+       gradientTransform="translate(43.933654,19.704915)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient252"
@@ -163,7 +169,7 @@
        x2="70.643753"
        y2="71.17292"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(63.049796,19.175748)" />
+       gradientTransform="translate(63.049796,19.704915)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient252"
@@ -173,7 +179,7 @@
        x2="70.643753"
        y2="71.17292"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(82.165941,19.175748)" />
+       gradientTransform="translate(82.165941,19.704915)" />
     <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient12798"
@@ -193,19 +199,19 @@
      transform="translate(0,-90.752083)"
      style="display:inline">
     <rect
-       style="fill:url(#linearGradient159);fill-opacity:1;stroke-width:0.264583"
+       style="fill:url(#linearGradient159);fill-opacity:1;stroke-width:0.266963"
        id="rect121"
-       width="210.60834"
-       height="107.15625"
-       x="0"
-       y="90.752083" />
+       width="211.58749"
+       height="108.5875"
+       x="-2.7815501e-08"
+       y="91.28125" />
     <rect
        style="fill:none;fill-opacity:0.963563;stroke:#3398fd;stroke-width:0.474802;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect247"
        width="208.22314"
        height="103.63805"
        x="1.3256396"
-       y="92.416992"
+       y="92.946159"
        ry="2.9843419" />
   </g>
   <g
@@ -216,18 +222,18 @@
      style="display:inline">
     <text
        xml:space="preserve"
-       transform="matrix(0.26458333,0,0,0.26458333,-3.4395833,-3.7041667)"
+       transform="matrix(0.26458333,0,0,0.26458333,-3.4395833,-3.175)"
        id="text5711"
        style="font-style:normal;font-weight:normal;font-size:26.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect5713);fill:#f2f2f2;fill-opacity:1;stroke:none"><tspan
          x="25"
          y="388.07434"
-         id="tspan21487"><tspan
+         id="tspan34401"><tspan
            style="font-family:Helvetica;-inkscape-font-specification:Helvetica"
-           id="tspan21481">makey </tspan><tspan
+           id="tspan34395">makey </tspan><tspan
            style="font-family:Monaco;-inkscape-font-specification:Monaco"
-           id="tspan21483">MIDI </tspan><tspan
+           id="tspan34397">MIDI </tspan><tspan
            style="font-weight:bold;font-size:17.3333px;font-family:Zapfino;-inkscape-font-specification:'Zapfino Bold'"
-           id="tspan21485">PentaPower 1</tspan></tspan></text>
+           id="tspan34399">PentaPower 1</tspan></tspan></text>
   </g>
   <g
      inkscape:groupmode="layer"
@@ -236,56 +242,61 @@
      style="display:inline">
     <path
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 9.2604166,17.4625 c 0,0.705555 0,1.411111 0,2.116666 0,1.234723 0,2.469445 0,3.704167 0,0.823148 0,1.881481 0,1.058333"
+       d="m 6.0854164,37.041679 c 0,0.705555 0,1.411111 0,2.116666 0,1.234723 0,2.469445 0,3.704167 0,0.823148 0,1.881481 0,1.058333"
        id="path6230" />
     <path
        style="fill:none;stroke:#787880;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 9.3927076,21.166669 v 6.879166 H 123.95729 V 21.167"
+       d="m 6.2177074,40.745848 v 6.879166 H 120.78227 v -6.878835"
        id="path6458"
        sodipodi:nodetypes="cccc" />
     <path
+       style="display:inline;fill:none;stroke:#787880;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 6.218,20.033333 v 6.879166 h 114.56469 v -6.878835"
+       id="path6458-6"
+       sodipodi:nodetypes="cccc" />
+    <path
        style="fill:none;stroke:#787880;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 9.3927086,49.616666 v 6.879166 H 123.95729 V 49.617"
+       d="m 6.2177084,69.195845 v 6.879166 H 120.78227 v -6.878832"
        id="path6458-1"
        sodipodi:nodetypes="cccc" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;fill:#999999;fill-opacity:1;stroke:none;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none"
-       x="60.450745"
-       y="55.562492"
+       x="57.275742"
+       y="75.141678"
        id="text10572"><tspan
          sodipodi:role="line"
          id="tspan10570"
          style="font-size:4.23333px;fill:#999999;fill-opacity:1;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none"
-         x="60.450745"
-         y="55.562492">scale</tspan></text>
+         x="57.275742"
+         y="75.141678">scale</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;display:inline;fill:#999999;fill-opacity:1;stroke:none;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none"
-       x="58.487728"
-       y="26.974209"
+       x="55.312725"
+       y="46.553394"
        id="text10572-0"><tspan
          sodipodi:role="line"
          id="tspan10570-0"
          style="font-size:4.23333px;fill:#999999;fill-opacity:1;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none"
-         x="58.487728"
-         y="26.974209">octave</tspan></text>
+         x="55.312725"
+         y="46.553394">octave</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;display:inline;fill:#999999;fill-opacity:1;stroke:none;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none"
        x="133.39958"
-       y="14.595291"
+       y="15.124457"
        id="text10572-0-0"><tspan
          sodipodi:role="line"
          id="tspan10570-0-4"
          style="font-size:4.23333px;fill:#999999;fill-opacity:1;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none"
          x="133.39958"
-         y="14.595291">channel</tspan></text>
+         y="15.124457">channel</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;display:inline;fill:#999999;fill-opacity:1;stroke:none;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none"
        x="133.2549"
-       y="26.127804"
+       y="26.656971"
        id="text10572-0-0-0"
        inkscape:transform-center-x="3.7041667"
        inkscape:transform-center-y="-6.3500001"><tspan
@@ -293,7 +304,84 @@
          id="tspan10570-0-4-3"
          style="font-size:4.23333px;fill:#999999;fill-opacity:1;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none"
          x="133.2549"
-         y="26.127804">instrument</tspan></text>
+         y="26.656971">instrument</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;display:inline;fill:#999999;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-miterlimit:4;stroke-dasharray:none"
+       x="12.810889"
+       y="26.015894"
+       id="text10572-0-4"><tspan
+         sodipodi:role="line"
+         id="tspan10570-0-47"
+         style="font-size:4.23333px;fill:#999999;fill-opacity:1;stroke-width:0.264999;stroke-miterlimit:4;stroke-dasharray:none"
+         x="12.810889"
+         y="26.015894">C</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;display:inline;fill:#999999;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-miterlimit:4;stroke-dasharray:none"
+       x="32.28141"
+       y="26.015894"
+       id="text10572-0-4-9"><tspan
+         sodipodi:role="line"
+         id="tspan10570-0-47-9"
+         style="font-size:4.23333px;fill:#999999;fill-opacity:1;stroke-width:0.264999;stroke-miterlimit:4;stroke-dasharray:none"
+         x="32.28141"
+         y="26.015894">D</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;display:inline;fill:#999999;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-miterlimit:4;stroke-dasharray:none"
+       x="52.237682"
+       y="26.015894"
+       id="text10572-0-4-6"><tspan
+         sodipodi:role="line"
+         id="tspan10570-0-47-5"
+         style="font-size:4.23333px;fill:#999999;fill-opacity:1;stroke-width:0.264999;stroke-miterlimit:4;stroke-dasharray:none"
+         x="52.237682"
+         y="26.015894">E</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;display:inline;fill:#999999;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-miterlimit:4;stroke-dasharray:none"
+       x="62.103687"
+       y="26.015894"
+       id="text10572-0-4-95"><tspan
+         sodipodi:role="line"
+         id="tspan10570-0-47-3"
+         style="font-size:4.23333px;fill:#999999;fill-opacity:1;stroke-width:0.264999;stroke-miterlimit:4;stroke-dasharray:none"
+         x="62.103687"
+         y="26.015894">F</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;display:inline;fill:#999999;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-miterlimit:4;stroke-dasharray:none"
+       x="81.560783"
+       y="26.013823"
+       id="text10572-0-4-91"><tspan
+         sodipodi:role="line"
+         id="tspan10570-0-47-90"
+         style="font-size:4.23333px;fill:#999999;fill-opacity:1;stroke-width:0.264999;stroke-miterlimit:4;stroke-dasharray:none"
+         x="81.560783"
+         y="26.013823">G</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;display:inline;fill:#999999;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-miterlimit:4;stroke-dasharray:none"
+       x="101.39304"
+       y="26.015894"
+       id="text10572-0-4-1"><tspan
+         sodipodi:role="line"
+         id="tspan10570-0-47-4"
+         style="font-size:4.23333px;fill:#999999;fill-opacity:1;stroke-width:0.264999;stroke-miterlimit:4;stroke-dasharray:none"
+         x="101.39304"
+         y="26.015894">A</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333px;line-height:1.25;font-family:sans-serif;display:inline;fill:#999999;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-miterlimit:4;stroke-dasharray:none"
+       x="111.1009"
+       y="26.015894"
+       id="text10572-0-4-94"><tspan
+         sodipodi:role="line"
+         id="tspan10570-0-47-7"
+         style="font-size:4.23333px;fill:#999999;fill-opacity:1;stroke-width:0.264999;stroke-miterlimit:4;stroke-dasharray:none"
+         x="111.1009"
+         y="26.015894">B</tspan></text>
   </g>
   <g
      inkscape:groupmode="layer"
@@ -301,84 +389,82 @@
      inkscape:label="controls"
      style="display:inline">
     <g
-       id="g21397">
-      <g
-         inkscape:label="Layer 1"
-         id="layer1-5"
-         transform="translate(5.701371,19.175748)"
-         inkscape:export-filename="/Users/bsmith/dev/bsmith/makey/makey_midi/skins/pentapower/pad.png"
-         inkscape:export-xdpi="96"
-         inkscape:export-ydpi="96">
-        <rect
-           style="fill:url(#radialGradient35294);fill-opacity:1;stroke:#3398fd;stroke-width:0.465;stroke-linejoin:round"
-           id="rect35097"
-           width="15.190972"
-           height="15.190976"
-           x="55.494808"
-           y="63.716263"
-           ry="2.9104166"
-           inkscape:export-filename="/Users/bsmith/dev/bsmith/makey/button.png"
-           inkscape:export-xdpi="96"
-           inkscape:export-ydpi="96" />
-        <rect
-           style="fill:url(#linearGradient35466);fill-opacity:1;stroke:#3398fd;stroke-width:0.465;stroke-linejoin:round"
-           id="rect35296"
-           width="15.190975"
-           height="15.190978"
-           x="55.494808"
-           y="63.716263"
-           ry="2.9104166"
-           inkscape:export-filename="/Users/bsmith/dev/bsmith/makey/button.png"
-           inkscape:export-xdpi="96"
-           inkscape:export-ydpi="96" />
-      </g>
+       inkscape:label="Layer 1"
+       id="layer1-5"
+       transform="translate(5.701371,19.704915)"
+       inkscape:export-filename="/Users/bsmith/dev/bsmith/makey/makey_midi/skins/pentapower/pad-active.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
       <rect
-         style="fill:url(#linearGradient35466-3);fill-opacity:1;stroke:#3398fd;stroke-width:0.465;stroke-linejoin:round"
-         id="rect35296-3"
-         width="15.191"
-         height="15.190978"
-         x="80.312317"
-         y="82.892006"
-         ry="2.9104166"
-         inkscape:export-filename="/Users/bsmith/dev/bsmith/makey/makey_midi/skins/pentapower/pad-inactive.png"
-         inkscape:export-xdpi="96"
-         inkscape:export-ydpi="96" />
-      <rect
-         style="fill:url(#linearGradient35466-3-9);fill-opacity:1;stroke:#3398fd;stroke-width:0.465;stroke-linejoin:round"
-         id="rect35296-3-0"
-         width="15.191"
-         height="15.190978"
-         x="99.428467"
-         y="82.892006"
+         style="fill:url(#radialGradient35294);fill-opacity:1;stroke:#3398fd;stroke-width:0.465;stroke-linejoin:round"
+         id="rect35097"
+         width="15.190972"
+         height="15.190976"
+         x="55.494808"
+         y="63.716263"
          ry="2.9104166"
          inkscape:export-filename="/Users/bsmith/dev/bsmith/makey/button.png"
          inkscape:export-xdpi="96"
          inkscape:export-ydpi="96" />
       <rect
-         style="fill:url(#linearGradient35466-3-3);fill-opacity:1;stroke:#3398fd;stroke-width:0.465;stroke-linejoin:round"
-         id="rect35296-3-6"
-         width="15.191"
+         style="fill:url(#linearGradient35466);fill-opacity:1;stroke:#3398fd;stroke-width:0.465;stroke-linejoin:round"
+         id="rect35296"
+         width="15.190975"
          height="15.190978"
-         x="118.54459"
-         y="82.892006"
-         ry="2.9104166"
-         inkscape:export-filename="/Users/bsmith/dev/bsmith/makey/button.png"
-         inkscape:export-xdpi="96"
-         inkscape:export-ydpi="96" />
-      <rect
-         style="fill:url(#linearGradient35466-3-5);fill-opacity:1;stroke:#3398fd;stroke-width:0.465;stroke-linejoin:round"
-         id="rect35296-3-2"
-         width="15.191"
-         height="15.190978"
-         x="137.66074"
-         y="82.892006"
+         x="55.494808"
+         y="63.716263"
          ry="2.9104166"
          inkscape:export-filename="/Users/bsmith/dev/bsmith/makey/button.png"
          inkscape:export-xdpi="96"
          inkscape:export-ydpi="96" />
     </g>
+    <rect
+       style="fill:url(#linearGradient35466-3);fill-opacity:1;stroke:#3398fd;stroke-width:0.465;stroke-linejoin:round"
+       id="rect35296-3"
+       width="15.191"
+       height="15.190978"
+       x="80.312317"
+       y="83.421173"
+       ry="2.9104166"
+       inkscape:export-filename="/Users/bsmith/dev/bsmith/makey/makey_midi/skins/pentapower/pad-inactive.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:url(#linearGradient35466-3-9);fill-opacity:1;stroke:#3398fd;stroke-width:0.465;stroke-linejoin:round"
+       id="rect35296-3-0"
+       width="15.191"
+       height="15.190978"
+       x="99.428467"
+       y="83.421173"
+       ry="2.9104166"
+       inkscape:export-filename="/Users/bsmith/dev/bsmith/makey/button.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:url(#linearGradient35466-3-3);fill-opacity:1;stroke:#3398fd;stroke-width:0.465;stroke-linejoin:round"
+       id="rect35296-3-6"
+       width="15.191"
+       height="15.190978"
+       x="118.54459"
+       y="83.421173"
+       ry="2.9104166"
+       inkscape:export-filename="/Users/bsmith/dev/bsmith/makey/button.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:url(#linearGradient35466-3-5);fill-opacity:1;stroke:#3398fd;stroke-width:0.465;stroke-linejoin:round"
+       id="rect35296-3-2"
+       width="15.191"
+       height="15.190978"
+       x="137.66074"
+       y="83.421173"
+       ry="2.9104166"
+       inkscape:export-filename="/Users/bsmith/dev/bsmith/makey/button.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
     <g
-       id="g15350">
+       id="g15350"
+       transform="translate(-3.1750001,19.579173)">
       <circle
          style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="path559-8-1"
@@ -440,15 +526,88 @@
          cy="19.314583"
          r="3.25" />
     </g>
+    <circle
+       style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path559-8-1-4"
+       cx="43.830006"
+       cy="18.520834"
+       r="3.25" />
+    <circle
+       style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path559-8-5-7"
+       cx="53.665001"
+       cy="18.520834"
+       r="3.25" />
+    <circle
+       style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path559-8-3-0"
+       cx="63.500004"
+       cy="18.520834"
+       r="3.25" />
+    <circle
+       style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path559-8-54-4"
+       cx="73.335007"
+       cy="18.520834"
+       r="3.25" />
+    <circle
+       style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path559-8-36-0"
+       cx="83.170006"
+       cy="18.520834"
+       r="3.25" />
+    <circle
+       style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path559-8-59-6"
+       cx="93.005005"
+       cy="18.520834"
+       r="3.25" />
+    <circle
+       style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path559-8-549-5"
+       cx="112.67501"
+       cy="18.520834"
+       r="3.25" />
+    <circle
+       style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path559-8-17-3"
+       cx="102.84001"
+       cy="18.520834"
+       r="3.25" />
+    <circle
+       style="fill:#ff0000;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path559-85"
+       cx="14.325003"
+       cy="18.520834"
+       r="3.25"
+       inkscape:export-filename="/Users/bsmith/dev/bsmith/makey/makey_midi/skins/pentapower/indicator-active.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <circle
+       style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path559-8-12"
+       cx="24.160004"
+       cy="18.520834"
+       r="3.25"
+       inkscape:export-filename="/Users/bsmith/dev/bsmith/makey/makey_midi/skins/pentapower/indicator-inactive.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <circle
+       style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path559-8-12-4"
+       cx="33.995003"
+       cy="18.520834"
+       r="3.25" />
     <rect
        style="fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.30116;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect5644"
        width="104.69884"
        height="9.42484"
-       x="15.131387"
-       y="32.858471" />
+       x="11.956389"
+       y="52.437656" />
     <g
-       id="g21388">
+       id="g21388"
+       transform="translate(-3.1750001,19.579173)">
       <circle
          style="display:inline;fill:#000000;fill-opacity:1;stroke:#3398fd;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="path559-8-1-7"
@@ -522,13 +681,13 @@
        width="74.077896"
        height="6.0832596"
        x="131.36835"
-       y="4.5009694" />
+       y="5.0301361" />
     <rect
        style="display:inline;fill:#999999;fill-opacity:1;stroke:#787880;stroke-width:0.30544;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect15820-6"
        width="74.077896"
        height="6.0832596"
        x="131.36835"
-       y="16.092392" />
+       y="16.621559" />
   </g>
 </svg>

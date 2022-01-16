@@ -11,8 +11,8 @@
     "root":
     {
         "title": "makey MIDI : PentaPower 1",
-        "height": 405,
-        "width": 796,
+        "height": 400,
+        "width": 798,
         "background": "pentapower.png"
     },
     "controls":
@@ -21,33 +21,29 @@
         {
             "width": 53,
             "height": 53,
+            "y": 320,
             "image-active": "pad-active.png",
             "image-inactive": "pad-inactive.png",
             "instances":
             [
                 {
-                    "x": 20,
-                    "y": 200,
+                    "x": 100,
                     "key": "Left"
                 },
                 {
-                    "x": 83,
-                    "y": 200,
+                    "x": 180,
                     "key": "Up"
                 },
                 {
-                    "x": 146,
-                    "y": 200,
+                    "x": 260,
                     "key": "Right"
                 },
                 {
-                    "x": 209,
-                    "y": 200,
+                    "x": 340,
                     "key": "Down"
                 },
                 {
-                    "x": 272,
-                    "y": 200,
+                    "x": 420,
                     "key": "space"
                 }
             ]

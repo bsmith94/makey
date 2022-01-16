@@ -35,11 +35,11 @@ class ButtonDef(WidgetDef):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    def load(self, data, width = None, height = None, image_path = None):
+    def load(self, data, width = None, height = None, y = None, image_path = None):
         self.width = json_get(data, 'width', def_val = width)
         self.height = json_get(data, 'height', def_val = height)
         self.x = json_get(data, 'x')
-        self.y = json_get(data, 'y')
+        self.y = json_get(data, 'y', def_val = y)
         self.key = json_get(data, 'key')
         self.image_path = json_get(data, self.image_key(), def_val = image_path)
 
@@ -91,9 +91,12 @@ class Skin:
         pads = json_get(json_get(data, 'controls'), 'pads')
         instances = json_get(pads, 'instances')
         idx = 0
+        width = json_get(pads, 'width', required = False)
+        height = json_get(pads, 'height', required = False)
+        y = json_get(pads, 'y', required = False)
         for p in instances:
             d = TwoStateButtonDef()
-            d.load(p, width = pads['width'], height = pads['height'],
+            d.load(p, width = width, height = height, y = y,
                    image_path = json_get(pads, 'image-inactive', required = False),
                    active_image_path = json_get(pads, 'image-active', required = False))
             d.index = idx
