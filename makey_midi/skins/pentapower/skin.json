@@ -63,7 +63,7 @@
         },
         "tonics":
         {
-            "y" : 41,
+            "y" : 120,
             "width" : 30,
             "height" : 30,
             "image-active": "indicator-active.png",
@@ -85,7 +85,7 @@
         },
         "octaves":
         {
-            "y" : 120,
+            "y" : 41,
             "width" : 36,
             "height" : 30,
             "image-active": "indicator-active.png",
