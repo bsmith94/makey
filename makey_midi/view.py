@@ -58,6 +58,55 @@ class TkButtonGroup(Sequence):
     def __len__(self):
         return len(self.buttons)
 
+class TkSkinAttributes:
+
+    def __init__(self, attrs):
+        self.attrs = attrs
+
+
+    def clean_attr(self, attrs, name_from, name_to, cleaner = None):
+        if name_from in attrs:
+            v = attrs[name_from]
+            if cleaner:
+                cleaner(attrs, name_to, v)
+            else:
+                attrs[name_to] = v
+            if name_from != name_to:
+                del attrs[name_from]
+
+    def clean_align(self, attrs, name, value):
+        if value == 'left':
+            attrs['anchor'] = 'w'
+        elif value == 'right':
+            attrs['anchor'] = 'e'
+        attrs[name] = value
+
+    def clean_font(self, attrs, name, value):
+        size = 16
+        if 'font-size' in attrs:
+            size = attrs['font-size']
+            del attrs['font-size']
+        attrs[name] = (value, size)
+
+    def clean(self):
+        attrs = self.attrs.copy()
+        self.clean_attr(attrs, 'align', 'justify', self.clean_align)
+        self.clean_attr(attrs, 'font', 'font', self.clean_font)
+        self.clean_attr(attrs, 'background', 'bg')
+        self.clean_attr(attrs, 'color', 'fg')
+        return attrs
+
+    def clean_and_return_vals(self, attrs, *args):
+        result = {}
+        for k in args:
+            v = None
+            if k in attrs:
+                v = attrs[k]
+            result[k] = v
+            del attrs[k]
+        return result
+
+
 class TkView:
 
     def __init__(self):
@@ -131,27 +180,11 @@ class TkView:
     def create_text_label(self, defn):
         r = None
         if defn:
-            attrs = defn.attrs.copy()
-            align = attrs['align']
-            if align == 'left':
-                attrs['anchor'] = 'w'
-            elif align == 'right':
-                attrs['anchor'] = 'e'
-            attrs['justify'] = align
-            del attrs['align']
-            attrs['bg'] = attrs['background']
-            del attrs['background']
-            attrs['fg'] = attrs['color']
-            del attrs['color']
-            attrs['font'] = (attrs['font'], attrs['font-size'])
-            del attrs['font-size']
-            x = attrs['x']
-            del attrs['x']
-            y = attrs['y']
-            del attrs['y']
-
+            cleaner = TkSkinAttributes(defn.attrs)
+            attrs = cleaner.clean()
+            pos = cleaner.clean_and_return_vals(attrs, 'x', 'y')
             r = Label(self.root, text = "", **attrs)
-            r.place(x = x, y = y)
+            r.place(x = pos['x'], y = pos['y'])
         return r
 
     def create_pattern_name(self):

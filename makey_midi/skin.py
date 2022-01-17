@@ -61,8 +61,29 @@ class TwoStateButtonDef(ButtonDef):
 
 class TextLabelDef(WidgetDef):
 
-    def __init__(self, attrs):
-        self.attrs = attrs
+    def __init__(self):
+        self.attrs = None
+
+    def get_defaults(self, data):
+        defs = json_gets(data, {
+            'font' :  'Courier',
+            'font-size' :  16,
+            'height' :  1,
+            'width' : 8,
+            'background': 'black',
+            'color' : 'white',
+            'borderwidth' : 0,
+            'relief' : 'sunken',
+            'align' : 'left',
+            'x' : None,
+            'y' : None
+        }, required = False)
+        return defs
+
+    def load(self, data, defs):
+        if data != None:
+            self.attrs = json_gets(data, defs, required = True)
+
 
 class Skin:
 
@@ -88,8 +109,6 @@ class Skin:
         self.load_octaves(d)
         self.load_patterns(d)
         self.load_text_labels(d)
-        #self.channels = WidgetDef()
-        #self.channels.load(json_get(json_get(d, 'controls'), 'channels'))
 
     def load_root(self, data):
         root = json_get(data, 'root')
@@ -132,30 +151,14 @@ class Skin:
         patterns = json_get(json_get(data, 'controls'), 'patterns')
         self.patterns = self.load_two_states(patterns)
 
-    def load_label_def(self, data, defs):
-        if data == None:
-            return None
-        vals = defs.copy()
-        vals = json_gets(data, vals, required = True)
-        return TextLabelDef(vals)
-
     def load_text_labels(self, data):
         data = json_get(json_get(data, 'controls'), 'text-labels')
-        defs = json_gets(data, {
-            'font' :  'Courier',
-            'font-size' :  16,
-            'height' :  1,
-            'width' : 8,
-            'background': 'black',
-            'color' : 'white',
-            'borderwidth' : 0,
-            'relief' : 'sunken',
-            'align' : 'left',
-            'x' : None,
-            'y' : None
-        }, required = False)
-        self.pattern_name = self.load_label_def(json_get(json_get(data, 'instances'),
-                                                         'pattern-name', required = False), defs)
+        defn = TextLabelDef()
+        defvals = defn.get_defaults(data)
+        insts = json_get(data, 'instances')
+        if 'pattern-name' in insts:
+            self.pattern_name = TextLabelDef()
+            self.pattern_name.load(json_get(insts, 'pattern-name'), defvals)
 
 
 if __name__ == '__main__':
