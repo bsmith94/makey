@@ -105,9 +105,9 @@ class TkSkinAttributes:
 
     def clean_and_return_vals(self, attrs, *args):
         '''
-        Returns array of values from attrs specified by keys in args.
+        Returns dict of values retrieved from attrs specified by keys in args.
         Removes any such values from attrs.
-        A missing key will be returned with None as the value.
+        A missing key in attrs will be returned with None as the value.
         '''
         result = {}
         for k in args:
