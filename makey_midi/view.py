@@ -60,6 +60,10 @@ class TkButtonGroup(Sequence):
 
 class TkSkinAttributes:
 
+    '''
+    Maps from skin attributes to tkinter attributes
+    '''
+    
     def __init__(self, attrs):
         self.attrs = attrs
 
@@ -89,6 +93,9 @@ class TkSkinAttributes:
         attrs[name] = (value, size)
 
     def clean(self):
+        '''
+        Returns dict of skin attributes mapped to tkinter values.
+        '''
         attrs = self.attrs.copy()
         self.clean_attr(attrs, 'align', 'justify', self.clean_align)
         self.clean_attr(attrs, 'font', 'font', self.clean_font)
@@ -97,6 +104,11 @@ class TkSkinAttributes:
         return attrs
 
     def clean_and_return_vals(self, attrs, *args):
+        '''
+        Returns array of values from attrs specified by keys in args.
+        Removes any such values from attrs.
+        A missing key will be returned with None as the value.
+        '''
         result = {}
         for k in args:
             v = None
